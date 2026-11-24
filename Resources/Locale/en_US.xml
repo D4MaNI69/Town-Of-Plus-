@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <!--
+    EN_US locale for Town Of Plus (English translation).
+    The mod's native language is Spanish (es_419.xml); this file provides the
+    English strings. Keys are stable (same MiraAPI/TOU Mira system).
+  -->
+  <string name="TopRoleSaboteadorLucesFuera">Lights Out</string>
+  <string name="TopKamikazeMorph">Morph</string>
+  <string name="TopKamikazeSwoop">Fade</string>
+  <string name="TopKamikazeMine">Dig</string>
+  <string name="TopKamikazeDrag">Drag</string>
+
+  <!-- ── Role names and descriptions (TOU Mira settings UI) ── -->
+  <string name="TownOfUsMira.Role.CerrajeroRole">Locksmith</string>
+  <string name="TownOfUsMira.Role.CerrajeroRole.IntroBlurb">Open and close doors from beyond the grave</string>
+  <string name="TownOfUsMira.Role.CerrajeroRole.MedDescription">A fallen Crewmate who opens and closes doors from beyond the grave to help their team.</string>
+  <string name="TownOfUsMira.Role.CerrajeroRole.TabDescription">Open and close doors as a ghost</string>
+
+  <string name="TownOfUsMira.Role.RitualistaRole">Ritualist</string>
+  <string name="TownOfUsMira.Role.RitualistaRole.IntroBlurb">Mark targets and reveal their factions</string>
+  <string name="TownOfUsMira.Role.RitualistaRole.MedDescription">Mark the configured number of players with your Ritual button: in the next meeting the chat will reveal your targets' factions.</string>
+  <string name="TownOfUsMira.Role.RitualistaRole.TabDescription">Mark players and reveal factions</string>
+
+  <string name="TownOfUsMira.Role.SaboteadorRole">Saboteur</string>
+  <string name="TownOfUsMira.Role.SaboteadorRole.IntroBlurb">Cut the lights from beyond the grave</string>
+  <string name="TownOfUsMira.Role.SaboteadorRole.MedDescription">A fallen Impostor who turns off the lights from beyond the grave: non-Impostors get minimal vision.</string>
+  <string name="TownOfUsMira.Role.SaboteadorRole.TabDescription">Blind the Crew as a ghost</string>
+
+  <string name="TownOfUsMira.Role.KamikazeRole">Kamikaze</string>
+  <string name="TownOfUsMira.Role.KamikazeRole.IntroBlurb">Deceive with your ability cycle and detonate when ejected</string>
+  <string name="TownOfUsMira.Role.KamikazeRole.MedDescription">You cannot kill: your Deceive button cycles 4 abilities. If ejected during the detonation meeting, the Impostors instantly win.</string>
+  <string name="TownOfUsMira.Role.KamikazeRole.TabDescription">Detonates when ejected in its meeting</string>
+
+  <string name="TownOfUsMira.Role.FrancotiradorRole">Sniper</string>
+  <string name="TownOfUsMira.Role.FrancotiradorRole.IntroBlurb">Reload your rifle and eliminate from afar</string>
+  <string name="TownOfUsMira.Role.FrancotiradorRole.MedDescription">Wait for the reload, stand still to aim and zoom out to see targets through walls. Pick your victim and shoot from a distance.</string>
+  <string name="TownOfUsMira.Role.FrancotiradorRole.TabDescription">Shoot distant targets through the map</string>
+
+  <string name="TownOfUsMira.Role.DictadorRole">Dictator</string>
+  <string name="TownOfUsMira.Role.DictadorRole.IntroBlurb">Accumulate votes against and reveal as a fake Mayor</string>
+  <string name="TownOfUsMira.Role.DictadorRole.MedDescription">Every meeting you accumulate votes AGAINST you (they never reset). Once the threshold is reached you may reveal in a meeting pretending to be the Mayor.</string>
+  <string name="TownOfUsMira.Role.DictadorRole.TabDescription">Reveals in meetings as a fake Mayor</string>
+
+  <string name="TownOfMira.Role.VictimaRole">Victim</string>
+  <string name="TownOfMira.Role.VictimaRole.IntroBlurb">Keeps secret notes that are revealed on death</string>
+  <string name="TownOfMira.Role.VictimaRole.MedDescription">Use the Note button to write secret notes that only you can see. When you die or get ejected, every note is revealed to everyone under the "Notes:" title.</string>
+  <string name="TownOfMira.Role.VictimaRole.TabDescription">Secret notes revealed on death</string>
+
+  <string name="TownOfMira.Role.AmalgamaRole">Amalgam</string>
+  <string name="TownOfMira.Role.AmalgamaRole.IntroBlurb">Resurrect in a body with a new role</string>
+  <string name="TownOfMira.Role.AmalgamaRole.MedDescription">As a ghost, channel over a dead body to resume your own life with a random enabled role. If someone reports a body or calls a meeting, the revive fails.</string>
+  <string name="TownOfMira.Role.AmalgamaRole.TabDescription">Resurrect in a body with a new role</string>
+
+  <string name="TownOfUsMira.Role.EcoRole">Echo</string>
+  <string name="TownOfUsMira.Role.EcoRole.IntroBlurb">Only your anchor sees, reads and hears you.</string>
+  <string name="TownOfUsMira.Role.EcoRole.Asignado">You are now the Echo from beyond! You are bound to {0}.</string>
+  <string name="TownOfUsMira.Role.EcoRole.ComoConseguir">Die in a meeting (ejected or guessed) to become Echo.</string>
+  <string name="TownOfUsMira.Role.EcoRole.AnclaMurioAsesinada">Your anchor {0} was killed in the round: you are a common ghost again.</string>
+  <string name="TownOfUsMira.Role.EcoRole.AnclaMurioExpulsada">Your anchor {0} was ejected in a meeting: you are a common ghost again.</string>
+  <string name="TownOfUsMira.Role.EcoRole.AnclaMurioAdivinada">Your anchor {0} was guessed/executed in a meeting: you are a common ghost again.</string>
+  <string name="TownOfUsMira.Role.EcoRole.AnclaDesconecto">Your anchor {0} disconnected: you are a common ghost again.</string>
+  <string name="TownOfUsMira.Role.EcoRole.MedDescription">If you die in a meeting (ejected or guessed) you return as Echo: a living player is assigned and only they see, read and hear you. You cannot see anyone's role (the only exception is your anchor, whose name you see in their role color). If you drift away you return to their side; if your anchor dies or disconnects you become a common ghost.</string>
+  <string name="TownOfUsMira.Role.EcoRole.TabDescription">Haunt your anchor from beyond</string>
+
+  <string name="TownOfUsMira.Role.AbogadoRole">Lawyer</string>
+  <string name="TownOfUsMira.Role.AbogadoRole.IntroBlurb">Sabotage for charges and manipulate the meeting</string>
+  <string name="TownOfUsMira.Role.AbogadoRole.MedDescription">Sabotage to earn charges (1 per 2 sabotages you start). In round: blackmail 1 player (their name turns grey and in the meeting they can only vote SKIP). In meeting (voting): TERMINAR forces SKIP for everyone and REHACER resets all votes; each use costs 1 charge.</string>
+  <string name="TownOfUsMira.Role.AbogadoRole.TabDescription">Sabotage for charges and manipulate the meeting</string>
+
+  <string name="TownOfUsMira.Role.ProfesorRole">Professor</string>
+  <string name="TownOfUsMira.Role.ProfesorRole.IntroBlurb">Retrain crewmates to change their role</string>
+  <string name="TownOfUsMira.Role.ProfesorRole.MedDescription">Complete tasks to earn retrain charges. In meetings mark a crewmate (or yourself) and after the meeting they can change role between 3 options.</string>
+  <string name="TownOfUsMira.Role.ProfesorRole.TabDescription">Mark in meetings and grant role change</string>
+
+  <string name="TownOfUsMira.Role.AisladorRole">Isolator</string>
+  <string name="TownOfUsMira.Role.AisladorRole.IntroBlurb">Trap others inside bubbles</string>
+  <string name="TownOfUsMira.Role.AisladorRole.MedDescription">Mark living players with Blow and trap them with Bubble: 3 seconds unable to move or use buttons. Shield yourself to become immune to kills.</string>
+  <string name="TownOfUsMira.Role.AisladorRole.TabDescription">Mark and trap players in bubbles</string>
+
+  <!-- ── Death reasons (meeting overlay / report body of TOU Mira) ──
+       The key is composed as "DiedTo" + killer role IdPart. -->
+  <string name="DiedToRitualistaRole">Killed by the Ritualist</string>
+  <string name="DiedToSaboteadorRole">Killed by the Saboteur</string>
+  <string name="DiedToKamikazeRole">Killed by the Kamikaze</string>
+  <string name="DiedToFrancotiradorRole">Killed by the Sniper</string>
+  <string name="DiedToDictadorRole">Killed by the Dictator</string>
+  <string name="DiedToCerrajeroRole">Killed by the Locksmith</string>
+  <string name="DiedToVictimaRole">Killed by the Victim</string>
+  <string name="DiedToAmalgamaRole">Killed by the Amalgam</string>
+  <string name="DiedToEcoRole">Killed by the Echo</string>
+  <string name="DiedToAbogadoRole">Killed by the Lawyer</string>
+  <string name="DiedToProfesorRole">Killed by the Professor</string>
+  <string name="DiedToAisladorRole">Killed by the Isolator</string>
+  <string name="TopRoleDeudorNombre">Debtor</string>
+  <string name="TopRoleDeudorIntro">Make a deal and collect the favor</string>
+  <string name="TopRoleDeudorDescripcion">Mark a living player (Trato). When they use their ability, the favor activates: they owe you a favor and receive your shared task.</string>
+  <string name="TopRoleDeudorAlertaFavor">You owe a favor to the Debtor</string>
+  <string name="TopRoleDeudorOpcionCooldown">Deal Cooldown</string>
+  <string name="TopRoleDeudorOpcionVarios">Can mark several players</string>
+  <string name="TopRoleDeudorOpcionSiMuere">If the Debtor dies</string>
+
+  <string name="TownOfUsMira.Role.DeudorRole">Debtor</string>
+  <string name="TownOfUsMira.Role.DeudorRole.IntroBlurb">Make a deal and collect the favor</string>
+  <string name="TownOfUsMira.Role.DeudorRole.MedDescription">Mark a living player with Trato. When they use their ability, the favor activates: they owe you a favor and receive your shared task that progresses for both.</string>
+  <string name="TownOfUsMira.Role.DeudorRole.TabDescription">Make deals and collect favors</string>
+  <string name="DiedToDeudorRole">Killed by the Debtor</string>
+
+  <string name="TownOfUsMira.Role.ColegaRole">Companion</string>
+  <string name="TownOfUsMira.Role.ColegaRole.IntroBlurb">Stay close and protect a player</string>
+  <string name="TownOfUsMira.Role.ColegaRole.MedDescription">Mark a living player with Accompany: the mark is permanent and you will always see an arrow toward them. If they use an ability, the arrow hides for 3 seconds. If they die, your vote counts twice. In meetings, Hope swaps all votes between you and your companion while they are alive.</string>
+  <string name="TownOfUsMira.Role.ColegaRole.TabDescription">Accompany a player and use Hope</string>
+  <string name="DiedToColegaRole">Killed by the Companion</string>
+</resources>

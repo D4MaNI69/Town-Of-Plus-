@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>PerfectComms.Api</id>
+    <version>4.1.7.1</version>
+    <title>Perfect Comms API</title>
+    <authors>Perfect Comms</authors>
+    <license type="expression">LGPL-2.1-only</license>
+    <licenseUrl>https://licenses.nuget.org/LGPL-2.1-only</licenseUrl>
+    <readme>README.md</readme>
+    <projectUrl>https://github.com/artriy/Perfect-Comms</projectUrl>
+    <description>Reference-only compile-time API for integrating Among Us mods with Perfect Comms. This package does not install or redistribute the Perfect Comms runtime mod.</description>
+    <tags>among-us bepinex il2cpp voice-chat modding</tags>
+    <repository type="git" url="https://github.com/artriy/Perfect-Comms.git" commit="59068ee4a9753731cb880cee3dad675e583f0b1f" />
+  </metadata>
+</package>

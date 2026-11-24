@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>AllOfUs.MiraAPI</id>
+    <version>0.4.1-ci.1038</version>
+    <authors>All Of Us, XtraCube, Angxl</authors>
+    <license type="expression">LGPL-2.1-or-later</license>
+    <licenseUrl>https://licenses.nuget.org/LGPL-2.1-or-later</licenseUrl>
+    <description>Simple and easy to use Among Us modding API.</description>
+    <repository type="git" url="https://github.com/All-Of-Us-Mods/MiraAPI" commit="30a39fa2239fee1e052c7828ccab61df2e767c9a" />
+    <dependencies>
+      <group targetFramework="net6.0">
+        <dependency id="BepInEx.Unity.IL2CPP" version="6.0.0-be.735" exclude="Runtime,Build,Native,Analyzers" />
+        <dependency id="Reactor" version="2.5.0-ci.371" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

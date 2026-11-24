@@ -1,0 +1,32 @@
+{
+  "News": [
+    {
+      "Date": "2026-09-09",
+      "Number": "10001",
+      "ShortTitle": "Town Of Plus+",
+      "SubTitle": "Ajustes, arreglos y nuevos añadidos",
+      "Title": "Primeros arreglos",
+      "Text": [
+        "Se han realizado ajustes y cambios, ademas de agregar nuevas funcionalidades.\n",
+        "\n",
+        "-Profesor:\n",
+        "Se arreglo el error de que al seleccionar un nuevo rol aun podias elejir mas roles.\n",
+        "\n",
+        "-Ermitaño:\n",
+        "Se intento solucionar el problema que bugueaba al Ermitaño al volver a su marca, haciendo que entre a traves de paredes\n",
+        "\n",
+        "-Dictador:\n",
+        "Ahora el el voto propio del dictador cuenta para acumular votos en contra\n",
+        "ahora el dictador redirecciona 2 votos suyos, 1 voto de aliados, nunca mas de 1 votos\n",
+        "\n",
+        "-Amalgama:\n",
+        "Ahora el amalgama ya no puede ver roles de los demas\n",
+        "\n",
+        "NUEVOS AÑADIDOS\n",
+        "\n",
+        "-Roles afterlife solo visibles para imp/neutrales\n",
+        "-Mejores Sabotajes (Luces - Reactor - O2)\n"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="TopRoleSaboteadorLucesFuera">Luzes Apagadas</string>
+  <string name="TopKamikazeMorph">Transformar</string>
+  <string name="TopKamikazeSwoop">Desvanecer</string>
+  <string name="TopKamikazeMine">Escavar</string>
+  <string name="TopKamikazeDrag">Arrastar</string>
+
+  <!-- ── Nomes e descrições dos papéis de Town Of Plus (UI de ajustes de TOU Mira) ── -->
+  <string name="TownOfUsMira.Role.CerrajeroRole">Serralheiro</string>
+  <string name="TownOfUsMira.Role.CerrajeroRole.IntroBlurb">Abre e fecha portas do além</string>
+  <string name="TownOfUsMira.Role.CerrajeroRole.MedDescription">Tripulante falecido que abre e fecha portas do além para ajudar sua equipe.</string>
+  <string name="TownOfUsMira.Role.CerrajeroRole.TabDescription">Abre e fecha portas sendo fantasma</string>
+
+  <string name="TownOfUsMira.Role.RitualistaRole">Ritualista</string>
+  <string name="TownOfUsMira.Role.RitualistaRole.IntroBlurb">Marca alvos e revela suas facções</string>
+  <string name="TownOfUsMira.Role.RitualistaRole.MedDescription">Marque os jogadores configurados com seu botão Ritual: na próxima reunião o chat revelará as facções dos seus alvos.</string>
+  <string name="TownOfUsMira.Role.RitualistaRole.TabDescription">Marca jogadores e revela facções</string>
+
+  <string name="TownOfUsMira.Role.SaboteadorRole">Sabotador</string>
+  <string name="TownOfUsMira.Role.SaboteadorRole.IntroBlurb">Apaga as luzes do além</string>
+  <string name="TownOfUsMira.Role.SaboteadorRole.MedDescription">Impostor falecido que apaga as luzes do além: os não impostores ficam com visão mínima.</string>
+  <string name="TownOfUsMira.Role.SaboteadorRole.TabDescription">Cega a tripulação sendo fantasma</string>
+
+  <string name="TownOfUsMira.Role.KamikazeRole">Kamikaze</string>
+  <string name="TownOfUsMira.Role.KamikazeRole.IntroBlurb">Engane com seu ciclo de habilidades e detone ao ser expulso</string>
+  <string name="TownOfUsMira.Role.KamikazeRole.MedDescription">Você não pode matar: seu botão Engano alterna 4 habilidades. Se expulsarem você na reunião de detonação, os impostores vencem na hora.</string>
+  <string name="TownOfUsMira.Role.KamikazeRole.TabDescription">Detona ao ser expulso em sua reunião</string>
+
+  <string name="TownOfUsMira.Role.FrancotiradorRole">Franco-atirador</string>
+  <string name="TownOfUsMira.Role.FrancotiradorRole.IntroBlurb">Recarregue seu rifle e elimine de longe</string>
+  <string name="TownOfUsMira.Role.FrancotiradorRole.MedDescription">Espere a recarga, fique parado para se preparar e ative o zoom para ver alvos através das paredes. Escolha sua vítima e atire de longe.</string>
+  <string name="TownOfUsMira.Role.FrancotiradorRole.TabDescription">Atira em alvos distantes através do mapa</string>
+
+  <string name="TownOfUsMira.Role.DictadorRole">Ditador</string>
+  <string name="TownOfUsMira.Role.DictadorRole.IntroBlurb">Acumula votos contra você e se revela como um falso Mayor</string>
+  <string name="TownOfUsMira.Role.DictadorRole.MedDescription">Cada reunião acumula os votos CONTRA você (não são zerados). Ao atingir o limite, pode se revelar na reunião fingindo ser o Mayor.</string>
+  <string name="TownOfUsMira.Role.DictadorRole.TabDescription">Se revela na reunião como um falso Mayor</string>
+  <string name="TownOfPlus.Role.VictimaRole">Vítima</string>
+  <string name="TownOfPlus.Role.VictimaRole.IntroBlurb">Guarda anotações secretas reveladas ao morrer</string>
+  <string name="TownOfPlus.Role.VictimaRole.MedDescription">Use o botão Nota para escrever anotações secretas que só você vê. Quando você morre ou é expulso, todas são reveladas para todos na próxima reunião.</string>
+  <string name="TownOfPlus.Role.VictimaRole.TabDescription">Anotações secretas reveladas ao morrer</string>
+  <string name="TownOfPlus.Role.AmalgamaRole">Amalgama</string>
+  <string name="TownOfPlus.Role.AmalgamaRole.IntroBlurb">Ressuscite em um corpo com uma nova função</string>
+  <string name="TownOfPlus.Role.AmalgamaRole.MedDescription">Como fantasma, canalize sobre um corpo morto para ressuscitar nele com sua cor e uma função aleatória habilitada. Se alguém reportar um corpo ou chamar reunião, a ressurreição falha.</string>
+  <string name="TownOfPlus.Role.AmalgamaRole.TabDescription">Ressuscite em um corpo com uma nova função</string>
+  <string name="TownOfUsMira.Role.EcoRole">Eco</string>
+  <string name="TownOfUsMira.Role.EcoRole.IntroBlurb">Só sua âncora vê, lê e ouve você.</string>
+  <string name="TownOfUsMira.Role.EcoRole.Asignado">Agora você é o Eco do além! Você está preso a {0}.</string>
+  <string name="TownOfUsMira.Role.EcoRole.ComoConseguir">Morra em reunião (expulso ou adivinhado) para virar Eco.</string>
+  <string name="TownOfUsMira.Role.EcoRole.AnclaMurioAsesinada">Sua âncora {0} foi assassinada na rodada: você volta a ser um fantasma comum.</string>
+  <string name="TownOfUsMira.Role.EcoRole.AnclaMurioExpulsada">Sua âncora {0} foi expulsa na reunião: você volta a ser um fantasma comum.</string>
+  <string name="TownOfUsMira.Role.EcoRole.AnclaMurioAdivinada">Sua âncora {0} foi adivinhada/executada na reunião: você volta a ser um fantasma comum.</string>
+  <string name="TownOfUsMira.Role.EcoRole.AnclaDesconecto">Sua âncora {0} desconectou: você volta a ser um fantasma comum.</string>
+  <string name="TownOfUsMira.Role.EcoRole.MedDescription">Se morrer em reunião (expulso ou adivinhado) você volta como Eco: um vivo é designado e só ele vê, lê e ouve você. Você NÃO vê a função de ninguém (a única exceção é sua âncora, cujo nome você vê na cor da função dela). Se se afastar, volta para o lado dele; se sua âncora morrer ou desconectar, você vira um fantasma comum.</string>
+  <string name="TownOfUsMira.Role.EcoRole.TabDescription">Acompanhe sua âncora do além</string>
+  <string name="TownOfUsMira.Role.AbogadoRole">Advogado</string>
+  <string name="TownOfUsMira.Role.AbogadoRole.IntroBlurb">Sabote para chantear e manipular a reunião</string>
+  <string name="TownOfUsMira.Role.AbogadoRole.MedDescription">Sabote para ganhar cargas (1 a cada 2 sabotagens que iniciar). Na rodada: chanteie 1 jogador (o nome fica cinza e na reunião só pode votar EM BRANCO). Na reunião (votação): TERMINAR força EM BRANCO para todos e REINICIAR zera os votos; cada uso custa 1 carga.</string>
+  <string name="TownOfUsMira.Role.AbogadoRole.TabDescription">Sabote para cargas e manipule a reunião</string>
+  <string name="TownOfUsMira.Role.ProfesorRole">Professor</string>
+  <string name="TownOfUsMira.Role.ProfesorRole.IntroBlurb">Retreine tripulantes para mudar de função</string>
+  <string name="TownOfUsMira.Role.ProfesorRole.MedDescription">Complete tarefas para ganhar cargas de retreinar. Em reuniões marque um tripulante (ou você mesmo) e após a reunião ele poderá trocar de função entre 3 opções.</string>
+  <string name="TownOfUsMira.Role.ProfesorRole.TabDescription">Marque em reuniões e conceda troca de função</string>
+
+  <string name="TownOfUsMira.Role.AisladorRole">Isolador</string>
+  <string name="TownOfUsMira.Role.AisladorRole.IntroBlurb">Isole outros com bolhas</string>
+  <string name="TownOfUsMira.Role.AisladorRole.MedDescription">Marque jogadores vivos com Soprar e prenda-os com Bolha: 3 segundos sem se mover nem usar botões. Proteja-se com Escudo, imune a assassinatos.</string>
+  <string name="TownOfUsMira.Role.AisladorRole.TabDescription">Marque e prenda com bolhas</string>
+
+  <!-- ── Razões de morte (overlay de reunião / report body de TOU Mira) ──
+       A clave é composta como "DiedTo" + IdPart do papel assassino. -->
+  <string name="DiedToRitualistaRole">Morto pelo Ritualista</string>
+  <string name="DiedToSaboteadorRole">Morto pelo Saboteador</string>
+  <string name="DiedToKamikazeRole">Morto pelo Kamikaze</string>
+  <string name="DiedToFrancotiradorRole">Morto pelo Francotirador</string>
+  <string name="DiedToDictadorRole">Morto pelo Ditador</string>
+  <string name="DiedToCerrajeroRole">Morto pelo Serralheiro</string>
+  <string name="DiedToVictimaRole">Morto pela Víctima</string>
+  <string name="DiedToAmalgamaRole">Morto pela Amalgama</string>
+  <string name="DiedToEcoRole">Morto pelo Eco</string>
+  <string name="DiedToAbogadoRole">Morto pelo Advogado</string>
+  <string name="DiedToAisladorRole">Morto pelo Isolador</string>
+  <string name="TopRoleDeudorNombre">Devedor</string>
+  <string name="TopRoleDeudorIntro">Faça um acordo e cobre o favor</string>
+  <string name="TopRoleDeudorDescripcion">Marque um jogador vivo (Trato). Quando ele usar sua habilidade, o favor se ativa: ele te deve um favor e recebe sua tarefa compartida.</string>
+  <string name="TopRoleDeudorAlertaFavor">Você deve um favor ao Devedor</string>
+  <string name="TopRoleDeudorOpcionCooldown">Tempo de recarga do Acordo</string>
+  <string name="TopRoleDeudorOpcionVarios">Pode marcar vários jogadores</string>
+  <string name="TopRoleDeudorOpcionSiMuere">Se o Devedor morrer</string>
+
+  <string name="TownOfUsMira.Role.DeudorRole">Devedor</string>
+  <string name="TownOfUsMira.Role.DeudorRole.IntroBlurb">Faça um acordo e cobre o favor</string>
+  <string name="TownOfUsMira.Role.DeudorRole.MedDescription">Marque um jogador vivo com Trato. Quando ele usar sua habilidade, o favor se ativa: ele deve um favor a você e recebe sua tarefa compartida que progride para ambos.</string>
+  <string name="TownOfUsMira.Role.DeudorRole.TabDescription">Faça acordos e cobre favores</string>
+  <string name="DiedToDeudorRole">Morto pelo Devedor</string>
+
+  <string name="TownOfUsMira.Role.ColegaRole">Colega</string>
+  <string name="TownOfUsMira.Role.ColegaRole.IntroBlurb">Acompanhe e proteja um jogador</string>
+  <string name="TownOfUsMira.Role.ColegaRole.MedDescription">Marque um jogador vivo com Acompanhar: a marca é permanente e você sempre verá uma flecha até ele. Se ele usar uma habilidade, a flecha se oculta por 3 segundos. Se ele morrer, seu voto conta em dobro. Na reunião, Esperança troca todos os votos entre você e seu acompanhado enquanto ele estiver vivo.</string>
+  <string name="TownOfUsMira.Role.ColegaRole.TabDescription">Acompanhe um jogador e use Esperança</string>
+  <string name="DiedToColegaRole">Morto pelo Colega</string>
+</resources>

@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <string name="TopRoleSaboteadorLucesFuera">Luces Fuera</string>
+  <string name="TopKamikazeMorph">Transformar</string>
+  <string name="TopKamikazeSwoop">Desvanecer</string>
+  <string name="TopKamikazeMine">Excavar</string>
+  <string name="TopKamikazeDrag">Arrastrar</string>
+
+  <!-- ── Nombres y descripciones de roles ── -->
+  <string name="TownOfUsMira.Role.CerrajeroRole">Cerrajero</string>
+  <string name="TownOfUsMira.Role.CerrajeroRole.MedDescription">Tripulante fallecido que abre y cierra puertas del más allá para ayudar a su equipo.</string>
+  <string name="TownOfUsMira.Role.CerrajeroRole.TabDescription">Abre y cierra puertas siendo fantasma</string>
+
+  <string name="TownOfUsMira.Role.RitualistaRole">Ritualista</string>
+  <string name="TownOfUsMira.Role.RitualistaRole.IntroBlurb">Marca. Descubre y MATA</string>
+  <string name="TownOfUsMira.Role.RitualistaRole.MedDescription">Marca a los jugadores configurados con tu botón Ritual: en la próxima reunión el chat revelará las facciones de tus objetivos.</string>
+  <string name="TownOfUsMira.Role.RitualistaRole.TabDescription">Marca jugadores y revela facciones</string>
+
+  <string name="TownOfUsMira.Role.SaboteadorRole">Saboteador</string>
+  <string name="TownOfUsMira.Role.SaboteadorRole.MedDescription">Impostor fallecido que apaga las luces del más allá: los no impostores quedan con visión mínima.</string>
+  <string name="TownOfUsMira.Role.SaboteadorRole.TabDescription">Ciega a la tripulación siendo fantasma</string>
+
+  <string name="TownOfUsMira.Role.KamikazeRole">Kamikaze</string>
+  <string name="TownOfUsMira.Role.KamikazeRole.IntroBlurb">Consigue que te expulsen para ganar</string>
+  <string name="TownOfUsMira.Role.KamikazeRole.MedDescription">No puedes matar: tu botón Engaño alterna 4 habilidades. Si te expulsan en la reunión de detonación, los impostores ganan al momento.</string>
+  <string name="TownOfUsMira.Role.KamikazeRole.TabDescription">Detona al ser expulsado en su reunión</string>
+
+  <string name="TownOfUsMira.Role.FrancotiradorRole">Francotirador</string>
+  <string name="TownOfUsMira.Role.FrancotiradorRole.IntroBlurb">Recarga y dispara</string>
+  <string name="TownOfUsMira.Role.FrancotiradorRole.MedDescription">Espera la recarga, quédate quieto para apuntar y activa el zoom para ver objetivos a través de las paredes. Elige tu víctima y dispara.</string>
+  <string name="TownOfUsMira.Role.FrancotiradorRole.TabDescripition">Dispara a objetivos lejanos a través del mapa</string>
+
+  <string name="TownOfUsMira.Role.DictadorRole">Dictador</string>
+  <string name="TownOfUsMira.Role.DictadorRole.IntroBlurb">Hazles creer que eres uno de ellos</string>
+  <string name="TownOfUsMira.Role.DictadorRole.MedDescription">Cada reunión acumulas los votos EN CONTRA (no se resetean). Al alcanzar el umbral puedes revelarte en la reunión fingiendo ser el Mayor.</string>
+  <string name="TownOfUsMira.Role.DictadorRole.TabDescription">Se revela en la reunión como un falso Mayor</string>
+
+  <string name="TownOfUsMira.Role.VictimaRole">Víctima</string>
+  <string name="TownOfUsMira.Role.VictimaRole.IntroBlurb">Deja notas para revelar a tu asesino</string>
+  <string name="TownOfUsMira.Role.VictimaRole.MedDescription">Usa el botón Nota para escribir notas secretas que solo tú ves. Al morir o ser expulsada, todas se revelan a todos bajo el título Notas:.</string>
+  <string name="TownOfUsMira.Role.VictimaRole.TabDescription">Notas secretas que se revelan al morir</string>
+
+  <string name="TownOfUsMira.Role.AmalgamaRole">Amalgama</string>
+  <string name="TownOfUsMira.Role.AmalgamaRole.MedDescription">Como fantasma, canaliza sobre un cuerpo muerto para resucitar en él con su color y un rol aleatorio habilitado. Si alguien reporta un cuerpo o llama reunión, el revive falla.</string>
+  <string name="TownOfUsMira.Role.AmalgamaRole.TabDescription">Resucita en un cuerpo con un rol nuevo</string>
+
+  <string name="TownOfUsMira.Role.ProfesorRole">Profesor</string>
+  <string name="TownOfUsMira.Role.ProfesorRole.IntroBlurb">Educa a tus alumnos.</string>
+  <string name="TownOfUsMira.Role.ProfesorRole.MedDescription">Completa tareas para ganar cargas de reentrenar. En reunión marca a un tripulante (o a ti mismo) y al terminar podrá cambiar de rol entre 3 opciones.</string>
+  <string name="TownOfUsMira.Role.ProfesorRole.TabDescription">Marca en reunión y otorga cambio de rol</string>
+
+    <string name="TownOfUsMira.Role.HuespedRole">Huésped</string>
+    <string name="TownOfUsMira.Role.HuespedRole.MedDescription">Aprovecha tu habilidad para poseer cuerpos y ayuda a los tripulantes o despista a los traidores.</string>
+    <string name="TownOfUsMira.Role.HuespedRole.TabDescription">Posee cuerpos</string>
+
+    <string name="TownOfUsMira.Role.EcoRole">Eco</string>
+    <string name="TownOfUsMira.Role.EcoRole.IntroBlurb">Solo tu ancla te ve, te lee y te oye.</string>
+    <string name="TownOfUsMira.Role.EcoRole.Asignado">¡Ahora eres el Eco del más allá! Estás atado a {0}.</string>
+    <string name="TownOfUsMira.Role.EcoRole.ComoConseguir">Muere en reunión (expulsado o adivinado) para volverte Eco.</string>
+    <string name="TownOfUsMira.Role.EcoRole.AnclaMurioAsesinada">Tu ancla {0} fue asesinada en ronda: vuelves a ser un fantasma común.</string>
+    <string name="TownOfUsMira.Role.EcoRole.AnclaMurioExpulsada">Tu ancla {0} fue expulsada en reunión: vuelves a ser un fantasma común.</string>
+    <string name="TownOfUsMira.Role.EcoRole.AnclaMurioAdivinada">Tu ancla {0} fue adivinada/ejecutada en reunión: vuelves a ser un fantasma común.</string>
+    <string name="TownOfUsMira.Role.EcoRole.AnclaDesconecto">Tu ancla {0} se desconectó: vuelves a ser un fantasma común.</string>
+    <string name="TownOfUsMira.Role.EcoRole.MedDescription">Moriste, pero ahora estas atado a tu Ancla</string>
+    <string name="TownOfUsMira.Role.EcoRole.TabDescription">Acompaña a tu ancla desde el más allá</string>
+
+    <string name="TownOfUsMira.Role.AbogadoRole">Abogado</string>
+    <string name="TownOfUsMira.Role.AbogadoRole.IntroBlurb">¿Caso cerrado?</string>
+    <string name="TownOfUsMira.Role.AbogadoRole.MedDescription">Aprovecha tus conocimientos para terminar reuniones a tu favor y chantajea jugadores para descartar votos</string>
+    <string name="TownOfUsMira.Role.AbogadoRole.TabDescription">Sabotea para cargas y manipula la reunión</string>
+
+    <string name="TownOfUsMira.Role.ErmitanoRole">Ermitaño</string>
+    <string name="TownOfUsMira.Role.ErmitanoRole.IntroBlurb">Escapa a donde sea.</string>
+    <string name="TownOfUsMira.Role.ErmitanoRole.MedDescription">Escapa a donde tu quieras, útil para escapar o descubrir cosas que no deberías.</string>
+    <string name="TownOfUsMira.Role.ErmitanoRole.TabDescription">Vete de aqui, chau</string>
+
+    <string name="TownOfUsMira.Role.AisladorRole">Aislador</string>
+    <string name="TownOfUsMira.Role.AisladorRole.IntroBlurb">Aísla a otros con burbujas</string>
+    <string name="TownOfUsMira.Role.AisladorRole.MedDescription">Marca jugadores vivos con Soplar y enciérralos con Burbuja: quedan 3 segundos sin moverse ni usar botones. Protégete con Escudo, inmune a asesinatos.</string>
+    <string name="TownOfUsMira.Role.AisladorRole.TabDescription">Marca y encierra con burbujas</string>
+
+    <string name="TownOfUsMira.Role.DeudorRole">Deudor</string>
+    <string name="TownOfUsMira.Role.DeudorRole.IntroBlurb">Haz un trato y cobra el favor</string>
+    <string name="TownOfUsMira.Role.DeudorRole.MedDescription">Marca jugadores vivos. Si uno de ellos usa una habilidad, te debera un favor y su voto irá a donde vaya el tuyo. las deudas se limpian tras cada reunión.</string>
+    <string name="TownOfUsMira.Role.DeudorRole.TabDescription">Haz tratos y cobra favores</string>
+
+    <string name="TownOfUsMira.Role.ColegaRole">Colega</string>
+    <string name="TownOfUsMira.Role.ColegaRole.IntroBlurb">Acompaña a un jugador</string>
+    <string name="TownOfUsMira.Role.ColegaRole.MedDescription">Marca a un jugador vivo con Acompañar. Siempre verás una flecha hacia él. Si usa una habilidad, la flecha se oculta 3 segundos. Si muere, ganas 2 votos permanentes. En reunión, Esperanza intercambia todos los votos entre tú y tu acompañado.</string>
+    <string name="TownOfUsMira.Role.ColegaRole.TabDescription">Acompaña a un jugador y usa Esperanza</string>
+
+  <!-- ── Razones de muerte ── -->
+  <string name="DiedToRitualistaRole">Muerto por el Ritualista</string>
+  <string name="DiedToSaboteadorRole">Muerto por el Saboteador</string>
+  <string name="DiedToKamikazeRole">Muerto por el Kamikaze</string>
+  <string name="DiedToFrancotiradorRole">Muerto por el Francotirador</string>
+  <string name="DiedToDictadorRole">Muerto por el Dictador</string>
+  <string name="DiedToCerrajeroRole">Muerto por el Cerrajero</string>
+  <string name="DiedToVictimaRole">Muerto por la Víctima</string>
+  <string name="DiedToAmalgamaRole">Muerto por la Amalgama</string>
+  <string name="DiedToEcoRole">Muerto por el Eco</string>
+  <string name="DiedToAbogadoRole">Muerto por el Abogado</string>
+  <string name="DiedToProfesorRole">Muerto por el Profesor</string>
+  <string name="DiedToHuespedRole">Muerto por el Huésped</string>
+  <string name="DiedToErmitanoRole">Muerto por el Ermitaño</string>
+  <string name="DiedToAisladorRole">Muerto por el Aislador</string>
+  <string name="DiedToDeudorRole">Muerto por el Deudor</string>
+  <string name="DiedToColegaRole">Muerto por el Colega</string>
+</resources>

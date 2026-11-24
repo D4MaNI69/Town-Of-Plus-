@@ -1,0 +1,1321 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PerfectComms</name>
+    </assembly>
+    <members>
+        <member name="T:PerfectComms.Api.VoicePhaseKind">
+            <summary>Game phase a rule is evaluated in.</summary>
+        </member>
+        <member name="T:PerfectComms.Api.VoiceAudioShape">
+            <summary>
+            Audio shape a channel/route applies. Mirrors the internal filter vocabulary so mod
+            results can name a valid shape without referencing internal types.
+            </summary>
+        </member>
+        <member name="F:PerfectComms.Api.VoiceAudioShape.Proximity">
+            <summary>
+            Proximity-shaped audio. The speaker's resolved body position is the default source;
+            <see cref="P:PerfectComms.Api.VoiceChannelResult.Origin"/> can replace it with a fixed spatial source.
+            </summary>
+        </member>
+        <member name="F:PerfectComms.Api.VoiceAudioShape.Radio">
+            <summary>Full-volume, no falloff (team radio).</summary>
+        </member>
+        <member name="F:PerfectComms.Api.VoiceAudioShape.Muffle">
+            <summary>Heard through a working low-pass channel filter.</summary>
+        </member>
+        <member name="T:PerfectComms.Api.VoiceVerdict">
+            <summary>Verdict a gate rule returns. Pass = no opinion, defer to other rules.</summary>
+        </member>
+        <member name="F:PerfectComms.Api.VoiceVerdict.Muffle">
+            <summary>Keep the speaker audible through the listener-muffle low-pass filter.</summary>
+        </member>
+        <member name="T:PerfectComms.Api.VoiceListenerMode">
+            <summary>Whether a listener-origin override replaces or augments the local player's hearing.</summary>
+        </member>
+        <member name="F:PerfectComms.Api.VoiceListenerMode.Replace">
+            <summary>Hear entirely from the override position (own body silent as a source).</summary>
+        </member>
+        <member name="F:PerfectComms.Api.VoiceListenerMode.Additive">
+            <summary>Hear from own body AND the override position; per target the louder wins.</summary>
+        </member>
+        <member name="T:PerfectComms.Api.VoiceApiCapability">
+            <summary>Runtime-discoverable API 1.2 capabilities.</summary>
+        </member>
+        <member name="F:PerfectComms.Api.VoiceApiCapability.ManagedTeamRadio">
+            <summary>Perfect Comms owns input, selection, capture, synchronization, and private routing for registered radio channels.</summary>
+        </member>
+        <member name="F:PerfectComms.Api.VoiceApiCapability.PersistentHostOptions">
+            <summary>Registered host options retain the local host's values across restarts.</summary>
+        </member>
+        <member name="F:PerfectComms.Api.VoiceApiCapability.OverlayAppearance">
+            <summary>Mods can classify custom player colors that need animated voice-overlay rendering.</summary>
+        </member>
+        <member name="F:PerfectComms.Api.VoiceApiCapability.ListenerTaskGateBypass">
+            <summary>A replacement listener origin can bypass task-wide receive disruptions without bypassing speaker privacy or route policy.</summary>
+        </member>
+        <member name="F:PerfectComms.Api.VoiceApiCapability.ListenerSightObscuration">
+            <summary>Listener effects can mark sight-based hearing as temporarily obscured.</summary>
+        </member>
+        <member name="T:PerfectComms.Api.VoicePlayerTraits">
+            <summary>Additional voice classifications a role mod can contribute for a player.</summary>
+        </member>
+        <member name="F:PerfectComms.Api.VoicePlayerTraits.ImpostorVoice">
+            <summary>Use the same vent, ghost-hearing, radio, and viewer-privacy classification as an impostor.</summary>
+        </member>
+        <member name="F:PerfectComms.Api.VoicePlayerTraits.VoiceDead">
+            <summary>Treat the player as dead for voice even if base game data has not marked them dead.</summary>
+        </member>
+        <member name="F:PerfectComms.Api.VoicePlayerTraits.Spectator">
+            <summary>Treat the voice-dead player as a spectator rather than an ordinary ghost.</summary>
+        </member>
+        <member name="T:PerfectComms.Api.VoiceRuleContext">
+            <summary>Inputs handed to every per-player callback.</summary>
+        </member>
+        <member name="M:PerfectComms.Api.VoiceRuleContext.#ctor(PlayerControl,PerfectComms.Api.VoicePhaseKind,System.Boolean,System.Boolean)">
+            <summary>Inputs handed to every per-player callback.</summary>
+        </member>
+        <member name="P:PerfectComms.Api.VoiceRuleContext.LocalPlayer">
+            <summary>The local listener on this client, if the scene has resolved one.</summary>
+        </member>
+        <member name="P:PerfectComms.Api.VoiceRuleContext.LocalIsDead">
+            <summary>Voice-dead state of <see cref="P:PerfectComms.Api.VoiceRuleContext.LocalPlayer"/> after registered player traits are applied.</summary>
+        </member>
+        <member name="P:PerfectComms.Api.VoiceRuleContext.GetOption">
+            <summary>Host-synced bool option value, keyed by the bare option key registered under this mod's id.</summary>
+        </member>
+        <member name="P:PerfectComms.Api.VoiceRuleContext.GetEnumOption">
+            <summary>Host-synced enum/int option value.</summary>
+        </member>
+        <member name="P:PerfectComms.Api.VoiceRuleContext.GetNumberOption">
+            <summary>Host-synced numeric option value.</summary>
+        </member>
+        <member name="T:PerfectComms.Api.VoiceRuleResult">
+            <summary>Result of a gate rule.</summary>
+        </member>
+        <member name="M:PerfectComms.Api.VoiceRuleResult.#ctor(PerfectComms.Api.VoiceVerdict,System.String)">
+            <summary>Result of a gate rule.</summary>
+        </member>
+        <member name="M:PerfectComms.Api.VoiceRuleResult.Mute(System.String)">
+            <summary>Mute the speaker in every voice phase, including dead-player routes.</summary>
+        </member>
+        <member name="M:PerfectComms.Api.VoiceRuleResult.Muffle(System.String)">
+            <summary>Muffle this speaker without affecting other incoming audio.</summary>
+        </member>
+        <member name="T:PerfectComms.Api.VoiceGlobalGateContext">
+            <summary>Inputs for option-aware global gates.</summary>
+        </member>
+        <member name="M:PerfectComms.Api.VoiceGlobalGateContext.#ctor(PlayerControl,PerfectComms.Api.VoicePhaseKind,System.Boolean)">
+            <summary>Inputs for option-aware global gates.</summary>
+        </member>
+        <member name="T:PerfectComms.Api.VoiceListenerContext">
+            <summary>Inputs for option-aware listener-origin and listener-effect callbacks.</summary>
+        </member>
+        <member name="M:PerfectComms.Api.VoiceListenerContext.#ctor(PlayerControl,PerfectComms.Api.VoicePhaseKind,System.Boolean)">
+            <summary>Inputs for option-aware listener-origin and listener-effect callbacks.</summary>
+        </member>
+        <member name="T:PerfectComms.Api.VoicePairVerdict">
+            <summary>How a listener-specific speaker rule composes with normal routing.</summary>
+        </member>
+        <member name="T:PerfectComms.Api.VoicePairRouteShape">
+            <summary>Audio output selected by an explicit listener-speaker route.</summary>
+        </member>
+        <member name="T:PerfectComms.Api.VoicePairContext">
+            <summary>Inputs for a listener-specific speaker decision. The listener is always the local player.</summary>
+        </member>
+        <member name="M:PerfectComms.Api.VoicePairContext.#ctor(PlayerControl,PlayerControl,PerfectComms.Api.VoicePhaseKind,System.Boolean,System.Boolean)">
+            <summary>Inputs for a listener-specific speaker decision. The listener is always the local player.</summary>
+        </member>
+        <member name="T:PerfectComms.Api.VoicePairResult">
+            <summary>
+            Listener-specific routing result. Mute wins over every other pair result. Muffle applies to the
+            otherwise selected route. Route replaces ordinary routing for this pair and can provide either
+            endpoint's spatial origin; omitted origins use the players' resolved positions.
+            </summary>
+        </member>
+        <member name="M:PerfectComms.Api.VoicePairResult.#ctor(PerfectComms.Api.VoicePairVerdict,System.String)">
+            <summary>
+            Listener-specific routing result. Mute wins over every other pair result. Muffle applies to the
+            otherwise selected route. Route replaces ordinary routing for this pair and can provide either
+            endpoint's spatial origin; omitted origins use the players' resolved positions.
+            </summary>
+        </member>
+        <member name="T:PerfectComms.Api.VoiceChannelResult">
+             <summary>
+             A voice channel two players share. Same Key on local and target = they hear each other.
+             Keys are namespaced by mod id internally to prevent cross-mod collision.
+            
+             A Proximity channel uses the speaker's resolved body position by default. Set <see cref="P:PerfectComms.Api.VoiceChannelResult.Origin"/>
+             to route it from a fixed point instead:
+             the listener hears the speaker as if the audio came from <see cref="P:PerfectComms.Api.VoiceChannelResult.Origin"/>, with normal
+             distance falloff. This is how a Medium seance is heard from the spirit's location rather than
+             as flat radio. Origin is only used when <see cref="P:PerfectComms.Api.VoiceChannelResult.Shape"/> is Proximity. Set
+             <see cref="P:PerfectComms.Api.VoiceChannelResult.TwoWay"/> to false for a receive-only member: it can hear transmitting members with
+             the same key, but it is not heard back through that channel.
+             </summary>
+        </member>
+        <member name="M:PerfectComms.Api.VoiceChannelResult.#ctor(System.String,System.Boolean,PerfectComms.Api.VoiceAudioShape,System.Single,System.Nullable{UnityEngine.Vector2})">
+             <summary>
+             A voice channel two players share. Same Key on local and target = they hear each other.
+             Keys are namespaced by mod id internally to prevent cross-mod collision.
+            
+             A Proximity channel uses the speaker's resolved body position by default. Set <see cref="P:PerfectComms.Api.VoiceChannelResult.Origin"/>
+             to route it from a fixed point instead:
+             the listener hears the speaker as if the audio came from <see cref="P:PerfectComms.Api.VoiceChannelResult.Origin"/>, with normal
+             distance falloff. This is how a Medium seance is heard from the spirit's location rather than
+             as flat radio. Origin is only used when <see cref="P:PerfectComms.Api.VoiceChannelResult.Shape"/> is Proximity. Set
+             <see cref="P:PerfectComms.Api.VoiceChannelResult.TwoWay"/> to false for a receive-only member: it can hear transmitting members with
+             the same key, but it is not heard back through that channel.
+             </summary>
+        </member>
+        <member name="T:PerfectComms.Api.VoiceManagedRadioChannelResult">
+            <summary>
+            One private team-radio membership managed end to end by Perfect Comms. <see cref="P:PerfectComms.Api.VoiceManagedRadioChannelResult.Key"/> is the
+            membership identity and may be player-specific (for example, a Lovers pair id). Perfect Comms
+            namespaces it by the registering mod id, adds it to the existing radio selector, synchronizes the
+            selected transmit channel, opens capture while the radio control is held, and mutes living
+            non-members. <see cref="P:PerfectComms.Api.VoiceManagedRadioChannelResult.Label"/> and <see cref="P:PerfectComms.Api.VoiceManagedRadioChannelResult.Badge"/> describe the channel in desktop and touch UI.
+            </summary>
+        </member>
+        <member name="M:PerfectComms.Api.VoiceManagedRadioChannelResult.#ctor(System.String,System.String,System.String)">
+            <summary>
+            One private team-radio membership managed end to end by Perfect Comms. <see cref="P:PerfectComms.Api.VoiceManagedRadioChannelResult.Key"/> is the
+            membership identity and may be player-specific (for example, a Lovers pair id). Perfect Comms
+            namespaces it by the registering mod id, adds it to the existing radio selector, synchronizes the
+            selected transmit channel, opens capture while the radio control is held, and mutes living
+            non-members. <see cref="P:PerfectComms.Api.VoiceManagedRadioChannelResult.Label"/> and <see cref="P:PerfectComms.Api.VoiceManagedRadioChannelResult.Badge"/> describe the channel in desktop and touch UI.
+            </summary>
+        </member>
+        <member name="T:PerfectComms.Api.VoiceListenerResult">
+            <summary>
+            Relocates where the LOCAL player hears from during tasks. LightRadius = -1 inherits the local
+            player's resolved light radius; zero disables vision-radius limiting for the override.
+            </summary>
+        </member>
+        <member name="M:PerfectComms.Api.VoiceListenerResult.#ctor(UnityEngine.Vector2,System.Single,PerfectComms.Api.VoiceListenerMode)">
+            <summary>
+            Relocates where the LOCAL player hears from during tasks. LightRadius = -1 inherits the local
+            player's resolved light radius; zero disables vision-radius limiting for the override.
+            </summary>
+        </member>
+        <member name="P:PerfectComms.Api.VoiceListenerResult.BypassTaskVoiceGates">
+            <summary>
+            Bypass only the task-wide "Only Ghosts Can Talk" and communications-sabotage receive gates.
+            Speaker mutes, phase policy, vent privacy, sight, distance, walls, and channel membership
+            remain authoritative.
+            </summary>
+        </member>
+        <member name="T:PerfectComms.Api.VoiceListenerFilterResult">
+            <summary>
+            Result returned by RegisterContextualListenerFilter. Muffle applies the listener low-pass filter
+            to all incoming audio; SightObscured limits sight-based hearing without exposing mod state.
+            </summary>
+        </member>
+        <member name="M:PerfectComms.Api.VoiceListenerFilterResult.#ctor(System.Boolean)">
+            <summary>
+            Result returned by RegisterContextualListenerFilter. Muffle applies the listener low-pass filter
+            to all incoming audio; SightObscured limits sight-based hearing without exposing mod state.
+            </summary>
+        </member>
+        <member name="T:PerfectComms.Api.VoicePhaseChangedContext">
+            <summary>Inputs delivered once when Perfect Comms observes a voice-phase transition.</summary>
+        </member>
+        <member name="M:PerfectComms.Api.VoicePhaseChangedContext.#ctor(PerfectComms.Api.VoicePhaseKind,PerfectComms.Api.VoicePhaseKind,PlayerControl)">
+            <summary>Inputs delivered once when Perfect Comms observes a voice-phase transition.</summary>
+        </member>
+        <member name="T:PerfectComms.Api.VoiceOverlayViewerVerdict">
+            <summary>Viewer-wide privacy verdict for identity-bearing voice overlays.</summary>
+        </member>
+        <member name="F:PerfectComms.Api.VoiceOverlayViewerVerdict.Pass">
+            <summary>No opinion; allow other rules or the normal overlay policy to decide.</summary>
+        </member>
+        <member name="F:PerfectComms.Api.VoiceOverlayViewerVerdict.DimAll">
+            <summary>Keep the overlay visible, but remove/dim identity-bearing presentation.</summary>
+        </member>
+        <member name="F:PerfectComms.Api.VoiceOverlayViewerVerdict.HideAll">
+            <summary>Hide every identity-bearing voice indicator for this viewer.</summary>
+        </member>
+        <member name="T:PerfectComms.Api.VoiceOverlayViewerResult">
+            <summary>Result of a viewer-wide overlay privacy rule.</summary>
+        </member>
+        <member name="M:PerfectComms.Api.VoiceOverlayViewerResult.#ctor(PerfectComms.Api.VoiceOverlayViewerVerdict)">
+            <summary>Result of a viewer-wide overlay privacy rule.</summary>
+        </member>
+        <member name="T:PerfectComms.Api.VoiceOverlaySpeakerVerdict">
+            <summary>Source-specific privacy verdict for an identity-bearing voice indicator.</summary>
+        </member>
+        <member name="F:PerfectComms.Api.VoiceOverlaySpeakerVerdict.Pass">
+            <summary>No opinion; present the transport speaker normally.</summary>
+        </member>
+        <member name="F:PerfectComms.Api.VoiceOverlaySpeakerVerdict.Alias">
+            <summary>Attribute activity to another player instead of the transport source.</summary>
+        </member>
+        <member name="F:PerfectComms.Api.VoiceOverlaySpeakerVerdict.HideSource">
+            <summary>Hide this transport source's identity-bearing indicator.</summary>
+        </member>
+        <member name="F:PerfectComms.Api.VoiceOverlaySpeakerVerdict.HideAll">
+            <summary>Hide every identity-bearing voice indicator for this viewer.</summary>
+        </member>
+        <member name="T:PerfectComms.Api.VoiceOverlaySpeakerResult">
+            <summary>Result of a source-specific overlay privacy rule.</summary>
+        </member>
+        <member name="M:PerfectComms.Api.VoiceOverlaySpeakerResult.#ctor(PerfectComms.Api.VoiceOverlaySpeakerVerdict,System.Nullable{System.Byte})">
+            <summary>Result of a source-specific overlay privacy rule.</summary>
+        </member>
+        <member name="M:PerfectComms.Api.VoiceOverlaySpeakerResult.Alias(System.Byte)">
+            <summary>Attribute the source's activity to <paramref name="targetPlayerId"/>.</summary>
+        </member>
+        <member name="T:PerfectComms.Api.VoiceOverlayViewerContext">
+            <summary>Inputs handed to a viewer-wide overlay privacy callback.</summary>
+        </member>
+        <member name="M:PerfectComms.Api.VoiceOverlayViewerContext.#ctor(PlayerControl,PerfectComms.Api.VoicePhaseKind,System.Boolean)">
+            <summary>Inputs handed to a viewer-wide overlay privacy callback.</summary>
+        </member>
+        <member name="T:PerfectComms.Api.VoiceOverlaySpeakerContext">
+            <summary>Inputs handed to a source-specific overlay privacy callback.</summary>
+        </member>
+        <member name="M:PerfectComms.Api.VoiceOverlaySpeakerContext.#ctor(PlayerControl,PlayerControl,PerfectComms.Api.VoicePhaseKind,System.Boolean,System.Boolean)">
+            <summary>Inputs handed to a source-specific overlay privacy callback.</summary>
+        </member>
+        <member name="T:PerfectComms.Api.VoiceHostOptionContext">
+            <summary>Option lookup supplied to conditional host-option visibility callbacks.</summary>
+        </member>
+        <member name="P:PerfectComms.Api.VoiceHostOptionContext.TeamRadioEnabled">
+            <summary>Current host-synced state of Perfect Comms' main Team Radio toggle.</summary>
+        </member>
+        <member name="T:PerfectComms.Api.VoiceHostOptionLegacyBinding">
+            <summary>
+            Optional source for a one-way migration into a namespaced host option. The previous value is
+            consulted only as the default when the new "modId.Key" setting is first created.
+            </summary>
+        </member>
+        <member name="M:PerfectComms.Api.VoiceHostOptionLegacyBinding.#ctor(System.String,System.String)">
+            <summary>
+            Optional source for a one-way migration into a namespaced host option. The previous value is
+            consulted only as the default when the new "modId.Key" setting is first created.
+            </summary>
+        </member>
+        <member name="T:PerfectComms.Api.VoiceHostOption">
+            <summary>Declarative host toggle. Persisted locally and lobby-synced as "modId.Key".</summary>
+        </member>
+        <member name="M:PerfectComms.Api.VoiceHostOption.#ctor(System.String,System.String,System.Boolean)">
+            <summary>Declarative host toggle. Persisted locally and lobby-synced as "modId.Key".</summary>
+        </member>
+        <member name="T:PerfectComms.Api.VoiceHostEnumOption">
+            <summary>Declarative persistent, lobby-synced host enum/stepper option.</summary>
+        </member>
+        <member name="M:PerfectComms.Api.VoiceHostEnumOption.#ctor(System.String,System.String,System.Int32,System.String[])">
+            <summary>Declarative persistent, lobby-synced host enum/stepper option.</summary>
+        </member>
+        <member name="T:PerfectComms.Api.VoiceHostNumberOption">
+            <summary>Declarative persistent, lobby-synced host numeric/slider option.</summary>
+        </member>
+        <member name="M:PerfectComms.Api.VoiceHostNumberOption.#ctor(System.String,System.String,System.Single,System.Single,System.Single,System.Single,System.String)">
+            <summary>Declarative persistent, lobby-synced host numeric/slider option.</summary>
+        </member>
+        <member name="F:PerfectComms.Api.PerfectCommsApi.ApiVersion">
+            <summary>
+            Compile-time API identifier. Because const values are embedded into consuming assemblies,
+            this is not a runtime capability probe.
+            </summary>
+        </member>
+        <member name="F:PerfectComms.Api.PerfectCommsApi.PluginId">
+            <summary>Stable BepInEx plugin id used for the soft-dependency presence check.</summary>
+        </member>
+        <member name="P:PerfectComms.Api.PerfectCommsApi.RuntimeApiVersion">
+            <summary>Runtime API identifier for reflection-based capability probes.</summary>
+        </member>
+        <member name="P:PerfectComms.Api.PerfectCommsApi.Capabilities">
+            <summary>Capabilities implemented by this runtime's API 1.2 surface.</summary>
+        </member>
+        <member name="M:PerfectComms.Api.PerfectCommsApi.RegisterVoiceRule(System.String,System.Func{PerfectComms.Api.VoiceRuleContext,PerfectComms.Api.VoiceRuleResult})">
+            <summary>
+            Register a per-player gate. Mute wins over Muffle, and both apply in every voice phase.
+            </summary>
+        </member>
+        <member name="M:PerfectComms.Api.PerfectCommsApi.RegisterGlobalGate(System.String,PerfectComms.Api.VoicePhaseKind,System.Func{System.Boolean},System.String)">
+            <summary>Register a phase-scoped global gate that mutes everyone while <paramref name="isActive"/> is true.</summary>
+        </member>
+        <member name="M:PerfectComms.Api.PerfectCommsApi.RegisterContextualGlobalGate(System.String,PerfectComms.Api.VoicePhaseKind,System.Func{PerfectComms.Api.VoiceGlobalGateContext,System.Boolean},System.String)">
+            <summary>Register an option-aware phase-scoped global gate.</summary>
+        </member>
+        <member name="M:PerfectComms.Api.PerfectCommsApi.RegisterVoicePlayerTraits(System.String,System.Func{PerfectComms.Api.VoiceRuleContext,PerfectComms.Api.VoicePlayerTraits})">
+            <summary>Contribute additive voice classifications such as impostor-equivalent voice.</summary>
+        </member>
+        <member name="M:PerfectComms.Api.PerfectCommsApi.RegisterVoicePairRule(System.String,System.Func{PerfectComms.Api.VoicePairContext,PerfectComms.Api.VoicePairResult})">
+            <summary>Register a listener-specific speaker rule for private, directional, or spatial role voice.</summary>
+        </member>
+        <member name="M:PerfectComms.Api.PerfectCommsApi.RegisterVoiceChannel(System.String,System.Func{PerfectComms.Api.VoiceRuleContext,PerfectComms.Api.VoiceChannelResult})">
+            <summary>
+            Register one channel-membership resolver. Every non-empty membership is retained, so a player
+            can join multiple channels by matching multiple registered callbacks.
+            </summary>
+        </member>
+        <member name="M:PerfectComms.Api.PerfectCommsApi.RegisterManagedRadioChannel(System.String,System.Func{PerfectComms.Api.VoiceRuleContext,PerfectComms.Api.VoiceManagedRadioChannelResult})">
+            <summary>
+            Register a private radio membership managed by Perfect Comms' existing Team Radio controls.
+            Return null when the player is ineligible. Players with the same non-empty Key share the
+            selected channel. Unlike a general voice channel, a managed radio transmission is exclusive:
+            living non-members cannot hear its normal proximity/meeting voice.
+            </summary>
+        </member>
+        <member name="M:PerfectComms.Api.PerfectCommsApi.RegisterListenerOrigin(System.String,System.Func{PlayerControl,PerfectComms.Api.VoiceListenerResult})">
+            <summary>
+            Register a task-phase local-player listener-origin override. Return null for normal hearing.
+            The first non-null result wins after built-in control-hearing behavior.
+            </summary>
+        </member>
+        <member name="M:PerfectComms.Api.PerfectCommsApi.RegisterContextualListenerOrigin(System.String,System.Func{PerfectComms.Api.VoiceListenerContext,PerfectComms.Api.VoiceListenerResult})">
+            <summary>Register an option- and phase-aware listener-origin override.</summary>
+        </member>
+        <member name="M:PerfectComms.Api.PerfectCommsApi.RegisterListenerFilter(System.String,System.Func{PlayerControl,System.Boolean})">
+            <summary>
+            Register a local-player listener FILTER: while the predicate returns true, all incoming audio
+            is muffled for the local player. For blinded / flashed / hypnotised hearing. No netcode.
+            </summary>
+        </member>
+        <member name="M:PerfectComms.Api.PerfectCommsApi.RegisterContextualListenerFilter(System.String,System.Func{PerfectComms.Api.VoiceListenerContext,PerfectComms.Api.VoiceListenerFilterResult})">
+            <summary>Register an option- and phase-aware listener muffle rule.</summary>
+        </member>
+        <member name="M:PerfectComms.Api.PerfectCommsApi.RegisterVoicePhaseObserver(System.String,System.Action{PerfectComms.Api.VoicePhaseChangedContext})">
+            <summary>Observe phase transitions once, before the new phase's player callbacks are resolved.</summary>
+        </member>
+        <member name="M:PerfectComms.Api.PerfectCommsApi.RegisterModTab(System.String,System.String)">
+            <summary>Register a host-panel tab for this mod. Options registered under the same id render inside it.</summary>
+        </member>
+        <member name="M:PerfectComms.Api.PerfectCommsApi.RegisterOverlayViewerRule(System.String,System.Func{PerfectComms.Api.VoiceOverlayViewerContext,PerfectComms.Api.VoiceOverlayViewerResult})">
+            <summary>
+            Register a viewer-wide overlay privacy rule. Results compose restrictively across all
+            registrations: HideAll wins over DimAll, which wins over Pass. A throw fails to HideAll.
+            </summary>
+        </member>
+        <member name="M:PerfectComms.Api.PerfectCommsApi.RegisterOverlaySpeakerRule(System.String,System.Func{PerfectComms.Api.VoiceOverlaySpeakerContext,PerfectComms.Api.VoiceOverlaySpeakerResult})">
+            <summary>
+            Register a per-speaker overlay privacy rule. Results compose restrictively across all
+            registrations: HideAll, HideSource, Alias, then Pass. Conflicting aliases and throws fail
+            to HideSource.
+            </summary>
+        </member>
+        <member name="M:PerfectComms.Api.PerfectCommsApi.RegisterAnimatedColorRule(System.String,System.Func{System.Int32,System.Boolean})">
+            <summary>
+            Register an additive custom-color classifier for speaking-avatar rendering. Return true only
+            for color ids that should use Perfect Comms' animated rainbow material.
+            </summary>
+        </member>
+        <member name="M:PerfectComms.Api.PerfectCommsApi.Unregister(System.String)">
+            <summary>Remove every registration for this mod id (call on unload).</summary>
+        </member>
+        <member name="T:VoiceChatPlugin.VoiceChat.AndroidMicrophone">
+             <summary>
+             Android microphone capture backend.
+            
+             Uses Unity's looping Microphone clip as the platform capture surface:
+             <code>
+               Il2CppStructArray&lt;float&gt; audioData = new((long)sampleCount);
+               micAudioClip.GetData(audioData, lastPosition.Value);
+             </code>
+            
+             Perfect Comms reads newly captured frames and pushes them directly into the native pc-mobile
+             engine for WebRTC encoding and transport.
+             </summary>
+        </member>
+        <member name="M:VoiceChatPlugin.VoiceChat.AndroidMicrophone.Start(System.String,System.Boolean)">
+            <summary>
+            Start capture. Mirrors Nebula's SetUnityMicrophone():
+            falls back to first available device if the given name is empty/invalid.
+            Never passes null to Microphone.Start (IL2CPP does not accept null here).
+            </summary>
+        </member>
+        <member name="M:VoiceChatPlugin.VoiceChat.AndroidMicrophone.Tick">
+             <summary>
+             Poll for new samples — call once per frame from the main thread.
+            
+             Mirrors Nebula's PushAudioData():
+             <code>
+               int currentPosition = Microphone.GetPosition(currentMic);
+               Il2CppStructArray&lt;float&gt; audioData = new((long)sampleCount);
+               micAudioClip.GetData(audioData, lastPosition.Value);
+               unityMic?.PushAudioData(audioData);
+             </code>
+             We skip the Il2CppStructArray here because AudioClip.GetData accepts float[]
+             in the IL2CPP interop layer — the array is marshalled automatically.
+             </summary>
+        </member>
+        <member name="T:VoiceChatPlugin.VoiceChat.ExclusiveCaptureLease">
+            <summary>
+            Process-local ownership gate for capture APIs that expose one global recording surface.
+            Unity's Microphone API is global per device, so a setup preview must never stop or replace
+            the live voice session's recording clip.
+            </summary>
+        </member>
+        <member name="T:VoiceChatPlugin.VoiceChat.FirstRunOutputPreviewPolicy">
+            <summary>Pure decisions shared by the runtime preview and deterministic tests.</summary>
+        </member>
+        <member name="T:VoiceChatPlugin.VoiceChat.FirstRunAudioPreview">
+            <summary>
+            Local-only setup probe. Desktop capture owns a peerless sidecar lease and never adds ICE or
+            peers; Android reads Unity's microphone directly. Output tests use the exact selected sidecar
+            output on desktop and Unity's current platform route on Android.
+            </summary>
+        </member>
+        <member name="P:VoiceChatPlugin.VoiceChat.FirstRunAudioPreview.Status">
+            <summary>
+            Compatibility projection for the existing single-status setup UI. New UI should bind to
+            MicrophoneStatus and OutputStatus separately.
+            </summary>
+        </member>
+        <member name="T:VoiceChatPlugin.VoiceChat.FirstRunSetupDraft">
+            <summary>
+            A complete staged copy of every value the setup edits. Nothing is written to BepInEx config
+            until Finish is pressed, so hover previews, Back, Use Existing Settings, crashes, and scene
+            changes cannot leave a half-applied setup behind.
+            </summary>
+        </member>
+        <member name="M:VoiceChatPlugin.VoiceChat.FirstRunSetupDraft.CreateFresh(VoiceChatPlugin.VoiceChat.VoiceChatLocalSettings)">
+            <summary>
+            Creates the clean, recommended setup shown to every user. Existing values are retained
+            only as a rollback/comparison baseline; no setting is written until setup is finished.
+            </summary>
+        </member>
+        <member name="M:VoiceChatPlugin.VoiceChat.FirstRunSetupDraft.CreateFreshFrom(VoiceChatPlugin.VoiceChat.FirstRunSetupDraft)">
+            <summary>
+            Pure factory used by tests and by <see cref="M:VoiceChatPlugin.VoiceChat.FirstRunSetupDraft.CreateFresh(VoiceChatPlugin.VoiceChat.VoiceChatLocalSettings)"/> after the current settings have
+            been captured. The advanced VAD threshold is preserved because setup neither displays nor
+            commits that setting.
+            </summary>
+        </member>
+        <member name="M:VoiceChatPlugin.VoiceChat.FirstRunSetupDraft.CaptureExisting(VoiceChatPlugin.VoiceChat.VoiceChatLocalSettings)">
+            <summary>
+            Captures the actual persisted values. This is intentionally separate from
+            <see cref="M:VoiceChatPlugin.VoiceChat.FirstRunSetupDraft.CreateFresh(VoiceChatPlugin.VoiceChat.VoiceChatLocalSettings)"/> so transaction rollback can never restore recommended defaults
+            over an existing user's settings.
+            </summary>
+        </member>
+        <member name="T:VoiceChatPlugin.VoiceChat.FirstRunSetupTriggerReason">
+            <summary>
+            Explains why the first-run setup should be opened. Keeping the reason explicit lets the
+            UI distinguish a required one-time revision from a user-requested rerun without coupling
+            the decision to Unity or BepInEx.
+            </summary>
+        </member>
+        <member name="T:VoiceChatPlugin.VoiceChat.FirstRunSetupState">
+            <summary>
+            Immutable result of evaluating persisted onboarding state for the current setup revision.
+            </summary>
+        </member>
+        <member name="P:VoiceChatPlugin.VoiceChat.FirstRunSetupState.RevisionToStoreOnCompletion">
+            <summary>
+            The marker to persist after an explicit Finish or Use Existing Settings choice. A marker written by a newer
+            build is never lowered if the user later runs an older build manually.
+            </summary>
+        </member>
+        <member name="T:VoiceChatPlugin.VoiceChat.FirstRunSetupPolicy">
+            <summary>
+            Pure first-run setup policy. Revision zero is the missing/default config value, so revision
+            one opens once for both a fresh install and an existing installation upgrading to v4.
+            Future releases should increment this only when another automatic setup pass is intentional.
+            </summary>
+        </member>
+        <member name="T:VoiceChatPlugin.VoiceChat.FirstRunToneGenerator">
+            <summary>
+            Pure managed chime generation for the first-run output test. Desktop calls this from a
+            ThreadPool worker, so this file must never depend on engine or IL2CPP-backed APIs.
+            </summary>
+        </member>
+        <member name="T:VoiceChatPlugin.VoiceChat.GameStateSendGate">
+            <summary>Coalesces per-render-frame mixer state into a bounded media-control cadence.</summary>
+        </member>
+        <member name="M:VoiceChatPlugin.VoiceChat.PeerSessionManager.HasActiveNegotiation(System.Int64)">
+            <summary>
+            Returns true while at least one peer is inside the manager-owned ICE/SDP negotiation
+            deadline. Room-level recovery must not tear down the backend during this interval: doing
+            so discards a negotiation which the native engine is still legitimately completing.
+            </summary>
+        </member>
+        <member name="M:VoiceChatPlugin.VoiceChat.PeerSessionManager.RequestRelayForPeer(System.Int32,System.Int64)">
+            Marks one failed direct peer for a mixed direct-plus-relay retry. If credentials are already
+            available the peer restarts immediately; otherwise the backend fetches them and calls
+            EscalatePeer when ready. Automatic recovery never forces relay-only policy.
+        </member>
+        <member name="M:VoiceChatPlugin.VoiceChat.PeerSessionManager.RebuildAll(System.Int64)">
+            Recreates every current peer after an ICE-server setting change. The product always uses
+            automatic mixed ICE and lets candidate priority prefer direct paths over TURN.
+        </member>
+        <member name="M:VoiceChatPlugin.VoiceChat.PeerSessionManager.RefreshRelayPeers(System.Int64,System.Collections.Generic.ISet{System.Int32})">
+            Restarts peers whose current ICE configuration can use ephemeral TURN credentials. Peers
+            that have only ever used STUN remain untouched.
+        </member>
+        <member name="M:VoiceChatPlugin.VoiceChat.PeerSessionManager.RestartIceAfterNetworkChange(System.Int64)">
+            Restarts established ICE agents after an operating-system network-address change. Protocol
+            v5 peers keep their media peer and renegotiate in place; older compatible peers use the
+            proven remove/recreate fallback.
+        </member>
+        <member name="T:VoiceChatPlugin.VoiceChat.PerfectCommsConfigStore">
+            <summary>
+            Owns Perfect Comms' user-global BepInEx configuration. BepInEx ConfigFile serializes access only
+            inside one process and rewrites its target directly, so sharing one ConfigFile path between two
+            live Among Us clients would otherwise permit stale whole-file overwrites. This store disables
+            direct ConfigFile saves, merges only locally changed definitions into the latest disk snapshot
+            under a cross-process lock, and promotes a flushed same-directory temporary file atomically.
+            </summary>
+        </member>
+        <member name="T:VoiceChatPlugin.VoiceChat.RadioStateSyncTracker">
+            <summary>
+            Pure send/dedupe state for the local radio RPC. Failed sends use the short retry gate and do
+            not advance the advertised state; successful inactive states are heartbeated just like active
+            ones so a lost release always converges.
+            </summary>
+        </member>
+        <member name="T:VoiceChatPlugin.VoiceChat.VoiceDeviceInfo">
+            <summary>
+            A selectable audio endpoint. <see cref="P:VoiceChatPlugin.VoiceChat.VoiceDeviceInfo.Id"/> is the opaque stable identifier sent back to
+            the helper; <see cref="P:VoiceChatPlugin.VoiceChat.VoiceDeviceInfo.Name"/> is presentation-only and may be duplicated or change over time.
+            </summary>
+        </member>
+        <member name="M:VoiceChatPlugin.VoiceChat.VoiceDeviceInfo.#ctor(System.String,System.String,System.Boolean,System.Boolean)">
+            <summary>
+            A selectable audio endpoint. <see cref="P:VoiceChatPlugin.VoiceChat.VoiceDeviceInfo.Id"/> is the opaque stable identifier sent back to
+            the helper; <see cref="P:VoiceChatPlugin.VoiceChat.VoiceDeviceInfo.Name"/> is presentation-only and may be duplicated or change over time.
+            </summary>
+        </member>
+        <member name="T:VoiceChatPlugin.VoiceChat.ISidecarVoiceClient">
+            <summary>
+            The narrow surface the process-lifetime host needs from the desktop helper client. Keeping
+            this seam explicit lets the lease/ownership rules be tested without launching pc-capture.
+            </summary>
+        </member>
+        <member name="T:VoiceChatPlugin.VoiceChat.SidecarVoiceLease">
+            <summary>
+            Exclusive ownership of the helper's current voice session. Disposing the final lease clears
+            the session and terminates the helper process. Only the host coordinator remains reusable; a
+            later lobby launches a fresh helper without carrying audio-device or permission state across rooms.
+            </summary>
+        </member>
+        <member name="T:VoiceChatPlugin.VoiceChat.SidecarVoiceHostCore">
+            <summary>
+            Serializes helper start, lease handoff and process shutdown. The gate is intentionally held
+            across Start/config commands: those are rare lifecycle operations, and serialization prevents
+            a disposed backend's async start from racing room teardown or the next lobby's configuration.
+            </summary>
+        </member>
+        <member name="T:VoiceChatPlugin.VoiceChat.SignalingHelloMailbox">
+            <summary>
+            Retains only the compatibility Hello needed to bootstrap a voice backend that has not attached
+            its signaling subscriber yet. SDP, candidates and control messages deliberately never enter
+            this mailbox: unlike Hello they belong to a particular peer negotiation and can be unsafe to
+            replay after a backend replacement.
+            </summary>
+        </member>
+        <member name="T:VoiceChatPlugin.VoiceChat.SpeakingBarGhostBodyArt">
+            <summary>
+            The artwork selected for a speaking-bar avatar after applying the public-death privacy gate.
+            Kept Unity-free so transitions and fallback behavior can be covered by unit tests.
+            </summary>
+        </member>
+        <member name="M:VoiceChatPlugin.VoiceChat.SpeakingBarGhostAppearancePolicy.ShouldShowCosmetic(System.Boolean,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            Selects the cosmetic renderer set atomically with the body artwork. Until an exact post-ghost
+            snapshot exists, living hats/visors remain usable while the living skin is suppressed.
+            </summary>
+        </member>
+        <member name="T:VoiceChatPlugin.VoiceChat.SpeakingBarLivePreview">
+             <summary>
+             Canvas-native 15-player speaking-bar preview shared by local settings and first-run setup.
+            
+             This renderer intentionally owns no Camera, RenderTexture, world-space TextMeshPro,
+             DontDestroyOnLoad object, real-HUD sprite, or real-HUD style cache. The previous off-screen
+             world renderer could outlive the panel and participate in the game's HUD lifecycle. Keeping
+             every preview object beneath the existing UI canvas makes closing or destroying the panel the
+             complete lifecycle boundary.
+             </summary>
+        </member>
+        <member name="T:VoiceChatPlugin.VoiceChat.SpeakingBarRosterMember">
+            <summary>
+            Minimal roster observation used by the speaking-bar policy. Keeping this type independent of
+            Unity and PlayerControl makes public-death publication and ordering deterministic in tests.
+            </summary>
+        </member>
+        <member name="M:VoiceChatPlugin.VoiceChat.SpeakingBarRosterMember.#ctor(System.Byte,System.Boolean)">
+            <summary>
+            Minimal roster observation used by the speaking-bar policy. Keeping this type independent of
+            Unity and PlayerControl makes public-death publication and ordering deterministic in tests.
+            </summary>
+        </member>
+        <member name="T:VoiceChatPlugin.VoiceChat.SpeakingBarRosterPolicy">
+            <summary>
+            Pure policy for the speaking bar's public roster. Task-world deaths remain frozen until a
+            meeting/exile boundary publishes them; each publication rebuilds instead of unioning so a
+            publicly revived player can return to the alive group at the next boundary.
+            </summary>
+        </member>
+        <member name="M:VoiceChatPlugin.VoiceChat.SpeakingBarRosterPolicy.OrderPlayerIds(System.Collections.Generic.IEnumerable{System.Byte},System.Collections.Generic.IReadOnlySet{System.Byte})">
+            <summary>Returns a sorted copy; the source sequence is never modified.</summary>
+        </member>
+        <member name="M:VoiceChatPlugin.VoiceChat.SpeakingBarRosterPolicy.CanPublishFromSnapshot(System.Boolean,System.Boolean)">
+            <summary>
+            A transition-retained or partially enumerated roster must not consume the single
+            meeting/exile publication. The renderer keeps that publication pending until this is true.
+            </summary>
+        </member>
+        <member name="M:VoiceChatPlugin.VoiceChat.SpeakingBarRosterPolicy.IsPublicDeathPublicationBoundary(VoiceChatPlugin.VoiceChat.VoiceGamePhase,System.Boolean,VoiceChatPlugin.VoiceChat.VoiceGamePhase,System.Boolean)">
+            <summary>
+            Detects a public-information edge rather than treating every frame inside a meeting as a
+            fresh publication. MeetingActive can rise one frame before Phase becomes Meeting. Exile is
+            a separate edge because it publishes the ejected player's death.
+            </summary>
+        </member>
+        <member name="M:VoiceChatPlugin.VoiceChat.SpeakingBarRosterPolicy.NextPubliclyDeadSnapshot(System.Collections.Generic.IReadOnlySet{System.Byte},VoiceChatPlugin.VoiceChat.VoiceGamePhase,System.Boolean,VoiceChatPlugin.VoiceChat.VoiceGamePhase,System.Boolean,System.Collections.Generic.IEnumerable{VoiceChatPlugin.VoiceChat.SpeakingBarRosterMember})">
+            <summary>
+            Produces the next immutable-by-convention snapshot as a new set. Menu/Lobby clears it,
+            Meeting/Exile edges rebuild it from the current roster, and all other frames clone the
+            prior snapshot unchanged. Rebuilding is what clears a revive at the next public boundary.
+            </summary>
+        </member>
+        <member name="M:VoiceChatPlugin.VoiceChat.SpeakingBarRosterPolicy.AddPubliclyObservedDeaths(System.Collections.Generic.IReadOnlySet{System.Byte},System.Collections.Generic.IEnumerable{VoiceChatPlugin.VoiceChat.SpeakingBarRosterMember})">
+            <summary>
+            Adds deaths exposed by an already-public surface such as MeetingHud player cards. Unlike a
+            boundary rebuild, this deliberately never removes an earlier publication: a transient live
+            data read or an in-meeting revive must not make an already-revealed death private again.
+            </summary>
+        </member>
+        <member name="T:VoiceChatPlugin.VoiceChat.SpeakingBarScalePolicy">
+            <summary>
+            Defines the v4 speaking-bar scale contract independently from Unity rendering.
+            The renderer applies <see cref="F:VoiceChatPlugin.VoiceChat.SpeakingBarScalePolicy.VisualBaseline"/> after the user-facing scale,
+            while the one-time migration converts legacy values so existing users keep the
+            same rendered size.
+            </summary>
+        </member>
+        <member name="M:VoiceChatPlugin.VoiceChat.SpeakingBarScalePolicy.ConfigTextContainsSetting(System.String,System.String,System.String)">
+            <summary>
+            Checks the pre-bind config snapshot. This distinguishes an existing v3 scale
+            from the v4 default that BepInEx creates when a brand-new config is bound.
+            </summary>
+        </member>
+        <member name="T:VoiceChatPlugin.VoiceChat.SpscFloatRing">
+            <summary>
+            Preallocated single-producer/single-consumer PCM ring. The producer never advances the
+            consumer cursor: when full, a complete incoming block is rejected so the callback can keep a
+            coherent timeline without locks or partially overwritten samples. The consumer owns bounded
+            latency recovery and can discard stale history before crossfading into fresh audio.
+            </summary>
+        </member>
+        <member name="P:VoiceChatPlugin.VoiceChat.SpscFloatRing.ClockCorrectionSamples">
+            <summary>
+            Signed extra input samples consumed by bounded clock correction. Positive values mean
+            catch-up; negative values mean the consumer stretched audio to rebuild its target depth.
+            </summary>
+        </member>
+        <member name="M:VoiceChatPlugin.VoiceChat.SpscFloatRing.Read(System.Span{System.Single})">
+            <summary>Reads available PCM and fills any true underrun with a short channel-safe fade.</summary>
+        </member>
+        <member name="M:VoiceChatPlugin.VoiceChat.SpscFloatRing.Clear">
+            <summary>Call only after producer and consumer workers have stopped.</summary>
+        </member>
+        <member name="T:VoiceChatPlugin.VoiceChat.SuccessfulSendGate">
+            <summary>
+            Rate-limits real sends without treating an unavailable writer as a successful attempt. Failed
+            attempts use a short retry interval; only a confirmed send consumes the longer network-response
+            interval. A forced attempt bypasses the successful-send interval but never the anti-spin guard.
+            </summary>
+        </member>
+        <member name="P:VoiceChatPlugin.VoiceChat.VoiceChatLocalSettings.MicrophoneDevice">
+            <summary>The opaque helper/Unity selection identifier. Never use it as UI text.</summary>
+        </member>
+        <member name="P:VoiceChatPlugin.VoiceChat.VoiceChatLocalSettings.SpeakerDevice">
+            <summary>The opaque helper selection identifier. Never use it as UI text.</summary>
+        </member>
+        <member name="M:VoiceChatPlugin.VoiceChat.VoiceChatLocalSettings.UseExistingSettingsForFirstRunSetup">
+            <summary>
+            Keeps every persisted setting exactly as-is and records only that onboarding is complete.
+            This backs the explicit "Use existing settings" escape for both automatic and manual runs.
+            </summary>
+        </member>
+        <member name="M:VoiceChatPlugin.VoiceChat.VoiceChatPatches.UpdateKeybindsFromFrameDriver">
+            <summary>
+            Scene construction and EndGame do not guarantee a gameplay joystick, while the voice room
+            deliberately remains alive. Poll the complete keybind state machine from the persistent
+            manager in both voice scenes. Per-frame guards make the duplicate joystick path harmless.
+            </summary>
+        </member>
+        <member name="T:VoiceChatPlugin.VoiceChat.VoiceChatRoom">
+             <summary>
+             Manages the in-game voice chat session.
+            
+             C# owns game-state routing and Among Us custom-RPC signaling. Those callbacks identify the
+             dispatched PlayerControl object but do not expose authenticated packet sender provenance.
+             Native pc-capture/pc-mobile engines own capture, WebRTC RTP media, jitter buffering, mixing,
+             and playback.
+             </summary>
+        </member>
+        <member name="T:VoiceChatPlugin.VoiceChat.VoiceCompactStatusPolicy">
+            <summary>
+            Pure presentation policy for the small, non-blocking voice HUD status. Keeping composition out
+            of Unity makes the priority rules and the optional mute/deafen warning independently testable.
+            </summary>
+        </member>
+        <member name="T:VoiceChatPlugin.VoiceChat.VoiceConnectionStatusPolicy">
+            <summary>
+            Pure connection/readiness policy for the compact voice HUD. Local helper startup is only the
+            first gate: clients cannot actually exchange routed lobby audio until the live roster is known,
+            host policy is ready, and every expected remote has an established media channel.
+            </summary>
+        </member>
+        <member name="T:VoiceChatPlugin.VoiceChat.BetterCrewLinkLobbyEndpoint">
+            <summary>
+            Validates the optional BetterCrewLink public-lobby directory endpoint. This endpoint is not
+            part of private-room voice media, signaling, peer roster discovery, ICE, or TURN credential
+            delivery; it is used only to browse/publish optional public lobby listings.
+            </summary>
+        </member>
+        <member name="T:VoiceChatPlugin.VoiceChat.VoiceFirstRunSetup">
+            <summary>
+            Revision-gated, staged first-run setup. Fresh installs and upgrades use the exact same clean
+            recommended draft; only Finish applies it, while Use existing settings preserves local values.
+            </summary>
+        </member>
+        <member name="M:VoiceChatPlugin.VoiceChat.VoiceFirstRunSetup.ForceClose">
+            <summary>
+            Session/scene boundaries cannot leave a persistent setup preview holding platform audio.
+            This bypasses the interactive close confirmation because voice-room privacy and capture
+            ownership take precedence once gameplay is starting or ending.
+            </summary>
+        </member>
+        <member name="T:VoiceChatPlugin.VoiceChat.VoiceFirstRunSetupMainMenuLifecycle">
+            <summary>
+            Arms automatic setup from the main-menu lifecycle and waits until the frame after Start
+            before asking the setup UI to show. The setup implementation owns its persisted/process
+            guards; this adapter only guarantees one readiness callback per MainMenuManager instance.
+            </summary>
+        </member>
+        <member name="T:VoiceChatPlugin.VoiceChat.VoiceHudWarnings">
+            <summary>
+            Provides the operational status text that used to be appended to Among Us's PingTracker label.
+            Rendering is owned by the dedicated compact voice HUD so the text can be clamped to the safe
+            area instead of inheriting the vanilla ping label's scene-dependent pivot and clipping bounds.
+            </summary>
+        </member>
+        <member name="T:VoiceChatPlugin.VoiceChat.VoiceIdentityPrivacyDomain">
+            <summary>
+            Identity-bearing overlays have two materially different presentation domains. During tasks,
+            live disguises and concealments may hide or alias a transport speaker. Meetings, exile, and
+            results screens already publish stable player identities, so carrying task-world presentation
+            state into those phases creates a negative-evidence role tell instead of protecting identity.
+            </summary>
+        </member>
+        <member name="T:VoiceChatPlugin.VoiceChat.VoiceIdentityPrivacyPhasePolicy">
+            <summary>Pure phase policy shared by the runtime and regression tests.</summary>
+        </member>
+        <member name="M:VoiceChatPlugin.VoiceChat.VoiceIdentityPrivacyPhasePolicy.UsesBuiltInAppearancePrivacy(VoiceChatPlugin.VoiceChat.VoiceGamePhase)">
+            <summary>
+            Built-in reads describe the live task-world appearance. Public-identity phases present the
+            real transport source instead; explicit mod API rules still run separately.
+            </summary>
+        </member>
+        <member name="M:VoiceChatPlugin.VoiceChat.VoiceIdentityPrivacyPhasePolicy.ShouldResetTransitionState(VoiceChatPlugin.VoiceChat.VoiceGamePhase,VoiceChatPlugin.VoiceChat.VoiceGamePhase)">
+            <summary>
+            Every known phase change is a trusted identity epoch and therefore an implicit quiet edge.
+            Built-in presentation happens to share a public domain across meeting/exile/results, but
+            explicit mod API rules receive the exact phase and may legitimately change at those edges.
+            Unknown is ignored so a transient observation cannot discard a valid transition gate.
+            </summary>
+        </member>
+        <member name="M:VoiceChatPlugin.VoiceChat.VoiceIdentityPrivacyPhasePolicy.CanPresentStablePublicIdentity(VoiceChatPlugin.VoiceChat.VoiceGamePhase,System.Boolean,System.Boolean)">
+            <summary>
+            A public phase may use the stable authenticated roster or an already-public UI slot when the
+            live PlayerControl collection is briefly rebuilding. Task-world identity never gets this
+            fallback because its current concealment state must be inspected before attribution.
+            </summary>
+        </member>
+        <member name="T:VoiceChatPlugin.VoiceChat.VoiceIdentityPrivacyFrameCachePolicy">
+            <summary>Pure cache-key comparison so same-frame phase/game transitions are regression-tested.</summary>
+        </member>
+        <member name="T:VoiceChatPlugin.VoiceChat.VoiceIdentityPrivacyPhaseEpoch">
+            <summary>
+            Tracks the last authoritative phase while ignoring transient Unknown observations. Runtime uses
+            this epoch to decide when every per-source transition gate must be rebased.
+            </summary>
+        </member>
+        <member name="T:VoiceChatPlugin.VoiceChat.VoiceIdentityPrivacyDecision">
+            <summary>
+            Describes how a transport speaker may be represented by identity-bearing UI.
+            The numeric values are not a precedence order; <see cref="T:VoiceChatPlugin.VoiceChat.VoiceIdentityPrivacyPolicy"/>
+            applies the documented privacy ordering explicitly.
+            </summary>
+        </member>
+        <member name="T:VoiceChatPlugin.VoiceChat.VoiceIdentityPrivacyEvidence">
+            <summary>
+            Pure evidence supplied by game/mod adapters. A default value is deliberately unknown and
+            therefore fails closed; callers must opt into <see cref="P:VoiceChatPlugin.VoiceChat.VoiceIdentityPrivacyEvidence.KnownNormal"/> when both scopes were
+            inspected successfully.
+            </summary>
+        </member>
+        <member name="M:VoiceChatPlugin.VoiceChat.VoiceIdentityPrivacyEvidence.#ctor(System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Nullable{System.Byte})">
+            <summary>
+            Pure evidence supplied by game/mod adapters. A default value is deliberately unknown and
+            therefore fails closed; callers must opt into <see cref="P:VoiceChatPlugin.VoiceChat.VoiceIdentityPrivacyEvidence.KnownNormal"/> when both scopes were
+            inspected successfully.
+            </summary>
+        </member>
+        <member name="T:VoiceChatPlugin.VoiceChat.VoiceIdentityPrivacyResolution">
+            <summary>
+            A normalized privacy result. Only Normal and Alias carry a concrete presentation player.
+            Hide/Dim decisions intentionally do not expose a player slot to downstream UI.
+            </summary>
+        </member>
+        <member name="M:VoiceChatPlugin.VoiceChat.VoiceIdentityPrivacyResolution.#ctor(System.Byte,VoiceChatPlugin.VoiceChat.VoiceIdentityPrivacyDecision,System.Nullable{System.Byte})">
+            <summary>
+            A normalized privacy result. Only Normal and Alias carry a concrete presentation player.
+            Hide/Dim decisions intentionally do not expose a player slot to downstream UI.
+            </summary>
+        </member>
+        <member name="T:VoiceChatPlugin.VoiceChat.VoiceIdentityPrivacyPolicy">
+            <summary>
+            Resolves independently collected viewer-wide and source-specific evidence without touching
+            Unity or game objects.
+            </summary>
+        </member>
+        <member name="M:VoiceChatPlugin.VoiceChat.VoiceIdentityPrivacyPolicy.IsProvisional(VoiceChatPlugin.VoiceChat.VoiceIdentityPrivacyEvidence)">
+            <summary>
+            Unknown evidence is fail-private for the current frame, but it is not a trustworthy baseline
+            for a continuous-speech transition gate. This commonly occurs while scene-owned controls are
+            rebuilt between Tasks and Meeting.
+            </summary>
+        </member>
+        <member name="M:VoiceChatPlugin.VoiceChat.VoiceIdentityPrivacyPolicy.Resolve(System.Byte,VoiceChatPlugin.VoiceChat.VoiceIdentityPrivacyEvidence)">
+            <summary>
+            Privacy precedence is: hard viewer hide, source hide/unresolved alias, viewer dim,
+            resolved alias, normal. Unknown viewer state hides all; unknown source state hides that
+            source. An alias-to-self is normalized to Normal.
+            </summary>
+        </member>
+        <member name="T:VoiceChatPlugin.VoiceChat.VoiceIdentityPrivacyTransition">
+            <summary>
+            Result of applying a candidate policy to a speaker's quiet-edge transition gate.
+            </summary>
+        </member>
+        <member name="M:VoiceChatPlugin.VoiceChat.VoiceIdentityPrivacyTransition.#ctor(VoiceChatPlugin.VoiceChat.VoiceIdentityPrivacyResolution,System.Boolean)">
+            <summary>
+            Result of applying a candidate policy to a speaker's quiet-edge transition gate.
+            </summary>
+        </member>
+        <member name="T:VoiceChatPlugin.VoiceChat.VoiceIdentityPrivacyTransitionGate">
+            <summary>
+            Prevents an already-speaking source from changing identity-bearing presentation mid-utterance.
+            Once a candidate changes while speaking, presentation remains quarantined until a quiet frame
+            accepts the latest candidate. Use one gate per transport source.
+            </summary>
+        </member>
+        <member name="M:VoiceChatPlugin.VoiceChat.VoiceIdentityPrivacyTransitionGate.Observe(VoiceChatPlugin.VoiceChat.VoiceIdentityPrivacyResolution,System.Boolean,System.Boolean)">
+            <summary>
+            Presents provisional fail-private evidence without accepting it as transition history. Once
+            the scene lookup recovers, the known candidate may be shown immediately even if speech never
+            went quiet.
+            </summary>
+        </member>
+        <member name="T:VoiceChatPlugin.VoiceChat.VoiceIdentityAliasCollision">
+            <summary>
+            Detects when an alias and another independently routed source resolve to the same visible slot.
+            Callers should coalesce such activity instead of creating a second identity-bearing indicator.
+            </summary>
+        </member>
+        <member name="T:VoiceChatPlugin.VoiceChat.VoiceIdentityPresentedSpeaker">
+            <summary>
+            One identity-safe speaking entry after applying the local viewer's role/appearance policy.
+            SourcePlayerId remains the transport speaker; PresentationPlayerId is the only player identity
+            an overlay is allowed to render.
+            </summary>
+        </member>
+        <member name="M:VoiceChatPlugin.VoiceChat.VoiceIdentityPresentedSpeaker.#ctor(System.Byte,System.Byte,System.Single)">
+            <summary>
+            One identity-safe speaking entry after applying the local viewer's role/appearance policy.
+            SourcePlayerId remains the transport speaker; PresentationPlayerId is the only player identity
+            an overlay is allowed to render.
+            </summary>
+        </member>
+        <member name="T:VoiceChatPlugin.VoiceChat.VoiceIdentityPrivacyFrame">
+            <summary>
+            Frame-cached, viewer-specific visual projection of VoiceOverlayState. All identity-bearing
+            surfaces consume this same projection so a meeting card, fixed slot, or volume meter cannot
+            reveal an identity suppressed by another surface.
+            </summary>
+        </member>
+        <member name="T:VoiceChatPlugin.VoiceChat.VoiceIdentityPrivacyRuntime">
+            <summary>
+            Mod-agnostic runtime projection for vanilla appearance privacy and registered overlay rules.
+            Role-mod state is supplied through PerfectCommsApi; this assembly performs no mod discovery.
+            </summary>
+        </member>
+        <member name="M:VoiceChatPlugin.VoiceChat.VoiceIdentityPrivacyRuntime.Peek(System.Byte,VoiceChatPlugin.VoiceChat.VoiceGamePhase)">
+            <summary>
+            Resolves current policy without changing the quiet-edge gate. Used to remove a stale dynamic
+            slot as soon as its player becomes concealed, even if that player is currently silent.
+            </summary>
+        </member>
+        <member name="M:VoiceChatPlugin.VoiceChat.VoiceIdentityPrivacyRuntime.ShouldSnapPresentation(System.Byte)">
+            <summary>
+            True when an active source or a retained quiet-tail source lost/changed this presentation
+            because of a privacy transition. UI should snap it off; an ordinary quiet edge may still fade.
+            </summary>
+        </member>
+        <member name="M:VoiceChatPlugin.VoiceChat.VoiceKeybind.#ctor(BepInEx.Configuration.ConfigFile,System.String,System.String,System.String,UnityEngine.KeyCode,System.String)">
+            <summary>
+            Creates a binding whose user-facing label differs from its persisted config key. This is
+            used when copy is clarified without discarding an existing user's binding.
+            </summary>
+        </member>
+        <member name="T:VoiceChatPlugin.VoiceChat.VoiceLobbyRegistryOperationQueue">
+            <summary>
+            Serializes Cloudflare registry operations for one publisher. In particular, teardown is queued
+            after an in-flight publish and remains the current operation until its final delete completes.
+            </summary>
+        </member>
+        <member name="T:VoiceChatPlugin.VoiceChat.VoiceModConfigPersistence">
+            <summary>
+            Keeps third-party option persistence independent of the IL2CPP BasePlugin type so the API
+            registry remains usable by tooling and tests that load only BepInEx.Core.
+            </summary>
+        </member>
+        <member name="M:VoiceChatPlugin.VoiceChat.VoiceModRegistry.ResolveOverlayViewerPrivacy(PlayerControl,PerfectComms.Api.VoicePhaseKind,System.Boolean)">
+            <summary>
+            Restrictively composes all viewer-wide overlay rules. Missing viewer state and callback
+            failures hide every identity-bearing indicator.
+            </summary>
+        </member>
+        <member name="M:VoiceChatPlugin.VoiceChat.VoiceModRegistry.ResolveOverlaySpeakerPrivacy(PlayerControl,PlayerControl,PerfectComms.Api.VoicePhaseKind,System.Boolean,System.Boolean)">
+            <summary>
+            Restrictively composes all source-specific overlay rules. Missing viewer state hides all;
+            missing speaker state, callback failures, invalid aliases, and alias conflicts hide source.
+            </summary>
+        </member>
+        <member name="T:VoiceChatPlugin.VoiceChat.VoiceModRemoteOptionState">
+            <summary>
+            Remote host-snapshot option overlay, isolated from PlayerControl-dependent registry code so
+            session cleanup is safe during teardown and test hosts. Local values remain owned by the registry;
+            this overlay is seeded from registered defaults for each complete host snapshot.
+            </summary>
+        </member>
+        <member name="T:VoiceChatPlugin.VoiceChat.VoiceControlHearingMode">
+            <summary>How the local player's registered listener origin is applied this frame.</summary>
+        </member>
+        <member name="T:VoiceChatPlugin.VoiceChat.VoiceRadioState">
+            <summary>
+            Selected Team Radio transport state. Built-in channels use an empty managed key; externally
+            registered channels use <see cref="F:VoiceChatPlugin.VoiceChat.VoiceTeamRadioChannel.External"/> and their namespaced key.
+            </summary>
+        </member>
+        <member name="M:VoiceChatPlugin.VoiceChat.VoiceRadioState.#ctor(VoiceChatPlugin.VoiceChat.VoiceTeamRadioChannel,System.String)">
+            <summary>
+            Selected Team Radio transport state. Built-in channels use an empty managed key; externally
+            registered channels use <see cref="F:VoiceChatPlugin.VoiceChat.VoiceTeamRadioChannel.External"/> and their namespaced key.
+            </summary>
+        </member>
+        <member name="T:VoiceChatPlugin.VoiceChat.VoiceRoleMuteState">
+            <summary>
+            Mod-agnostic voice state. Role mods project their behavior through PerfectCommsApi; this class
+            retains only base Among Us traits, global API gates, built-in impostor radio, and grace period.
+            </summary>
+        </member>
+        <member name="T:VoiceChatPlugin.VoiceChat.VoiceRoomLifetimeGate">
+            <summary>
+            Makes an explicit InnerNet disconnect authoritative over stale scene objects. EndGame and
+            LobbyBehaviour can survive for a frame while DisconnectInternal is unwinding; without this
+            latch the room driver could recreate capture immediately after the user chose Exit.
+            Only AmongUsClient.OnGameJoined confirms that a later network session may own voice again.
+            </summary>
+        </member>
+        <member name="M:VoiceChatPlugin.VoiceChat.VoiceRoomLifetimeGate.IsTerminalCondition(System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            Returns true only for confirmed voice-session terminal conditions. Scene objects and
+            InnerNet GameState are deliberately absent: both are transient while moving between the
+            game, EndGame, lobby, and intro, and must never tear down an otherwise-live voice mesh.
+            </summary>
+        </member>
+        <member name="M:VoiceChatPlugin.VoiceChat.VoiceRoomLifetimeGate.ResolveSnapshotSessionGameId(System.Int32,System.Int32,System.Nullable{VoiceChatPlugin.VoiceChat.VoiceGamePhase},System.Boolean,System.Boolean)">
+            <summary>
+            Among Us briefly clears GameId while rebuilding the same lobby after EndGame. Keep using the
+            already-confirmed session id only for that transition; every other zero GameId remains a
+            fail-closed boundary.
+            </summary>
+        </member>
+        <member name="M:VoiceChatPlugin.VoiceChat.VoiceRoomLifetimeGate.IsUsableSnapshot(VoiceChatPlugin.VoiceChat.VoiceGameStateSnapshot)">
+            <summary>
+            Rejects transition-frame snapshots that have lost the authenticated local identity or
+            player roster. Such snapshots are non-null but cannot route voice safely and must not
+            replace a still-usable snapshot from the same live session.
+            </summary>
+        </member>
+        <member name="M:VoiceChatPlugin.VoiceChat.VoiceRoomLifetimeGate.IsSafeForRouting(VoiceChatPlugin.VoiceChat.VoiceGameStateSnapshot)">
+            <summary>
+            A phase-promoted transition snapshot may safely continue routing with a bounded, previously
+            authenticated local identity even though the live LocalPlayer is not resolved on this exact
+            frame. The provenance remains false so recovery code cannot mistake it for a settled roster.
+            </summary>
+        </member>
+        <member name="M:VoiceChatPlugin.VoiceChat.VoiceRoomLifetimeGate.RequiresCompleteRemoteRoster(System.Nullable{VoiceChatPlugin.VoiceChat.VoiceGamePhase},VoiceChatPlugin.VoiceChat.VoiceGamePhase)">
+            <summary>
+            EndGame can route all surviving authenticated peers without a world roster. While the lobby
+            rebuilds immediately afterward, retain that global snapshot until the live roster is complete
+            so voice does not dip for players whose PlayerControl appears a few frames late. This guard is
+            deliberately limited to EndGame -> lobby-like transitions; it must never block initial startup
+            or keep stale task/meeting routing when a partial gameplay snapshot is available.
+            </summary>
+        </member>
+        <member name="M:VoiceChatPlugin.VoiceChat.VoiceRoomLifetimeGate.DecideSnapshotRefresh(System.Boolean,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            Pure refresh policy used by the room update loop and regression tests. An explicit session
+            end always wins; otherwise a usable refresh wins, then a usable retainable prior snapshot.
+            </summary>
+        </member>
+        <member name="T:VoiceChatPlugin.VoiceChat.VoiceSnapshotTransitionMerger">
+            <summary>
+            Reconciles the frame-local PlayerControl roster with the server-maintained InnerNet roster.
+            PlayerControls legitimately disappear while scenes change, but an InnerNet client leaving is
+            normally authoritative. The bounded EndGame-to-lobby replacement window is the sole exception
+            because InnerNet publishes partial allClients collections while that scene is rebuilding.
+            </summary>
+        </member>
+        <member name="M:VoiceChatPlugin.VoiceChat.VoiceSnapshotTransitionMerger.RetainPriorRoutesDuringAuthGap(VoiceChatPlugin.VoiceChat.VoiceGameStateSnapshot,VoiceChatPlugin.VoiceChat.VoiceGameStateSnapshot,System.Single,System.Single)">
+            <summary>
+            Carries the last same-session routing roster while both PlayerControls and the resolved
+            allClients collection are transiently unavailable. EndGame has no world roster and can keep
+            the routes until the room lifetime gate observes a real leave. Lobby/Intro/Unknown gaps are
+            bounded so an unavailable auth API cannot preserve stale membership indefinitely.
+            </summary>
+        </member>
+        <member name="M:VoiceChatPlugin.VoiceChat.VoiceSnapshotTransitionMerger.RetainPriorRoutesDuringEmptyAuthenticatedRosterGap(VoiceChatPlugin.VoiceChat.VoiceGameStateSnapshot,VoiceChatPlugin.VoiceChat.VoiceGameStateSnapshot,System.Single,System.Single)">
+            <summary>
+            A successfully enumerated but empty allClients collection is not a valid joined roster: it
+            does not even contain the local client. Among Us emits that state just before EndGame. Allow
+            the prior same-session routes through that short world-backed lead-in, then keep them for
+            EndGame; generic authentication failures remain restricted to safe transition phases.
+            </summary>
+        </member>
+        <member name="M:VoiceChatPlugin.VoiceChat.VoiceUiKit.PlayerVolumeRow.ClearLevelImmediately">
+            <summary>
+            Privacy transitions must not use the normal release animation: even a short decaying
+            meter would identify the speaker that just became concealed or was remapped.
+            </summary>
+        </member>
+        <member name="M:VoiceChatPlugin.VoiceChat.VoiceVolumeMath.ResolveAliveDeadMixFocus(System.Boolean,System.Boolean)">
+            <summary>
+            The focus exists only while exactly one action is held. Releasing both immediately returns
+            to neutral; holding both is also neutral so overlapping bindings cannot produce an arbitrary winner.
+            </summary>
+        </member>
+        <member name="T:VoiceChatPlugin.VoiceChat.SpeakingBarLayoutSolution">
+            <summary>
+            Result of evaluating every balanced line count in both viewport dimensions.
+            ContentWidth/ContentHeight are the unscaled footprint of the chosen layout,
+            including any outer padding supplied by the caller.
+            </summary>
+        </member>
+        <member name="M:VoiceChatPlugin.VoiceChat.SpeakingBarLayoutSolution.#ctor(System.Int32,System.Int32,System.Single,System.Single,System.Single,System.Boolean)">
+            <summary>
+            Result of evaluating every balanced line count in both viewport dimensions.
+            ContentWidth/ContentHeight are the unscaled footprint of the chosen layout,
+            including any outer padding supplied by the caller.
+            </summary>
+        </member>
+        <member name="T:VoiceChatPlugin.VoiceChat.SpeakingBarLayoutPolicy">
+            <summary>
+            Pure policy for speaking-bar preset flow and balanced wrapping. Unity-facing code is
+            responsible for measuring the safe-area capacity and applying the returned placement.
+            </summary>
+        </member>
+        <member name="M:VoiceChatPlugin.VoiceChat.SpeakingBarLayoutPolicy.GetLineCount(System.Int32,System.Int32)">
+            <summary>
+            Returns the number of balanced lines needed for <paramref name="itemCount"/>.
+            <paramref name="safeCapacity"/> is the number of items measured to fit on one line
+            at the requested scale. Values below one degrade to one item per line.
+            </summary>
+        </member>
+        <member name="M:VoiceChatPlugin.VoiceChat.SpeakingBarLayoutPolicy.SolveTwoDimensional(System.Int32,System.Boolean,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Int32,System.Nullable{System.Int32})">
+            <summary>
+            Chooses a balanced two-dimensional layout. Every candidate keeps at most the requested
+            <paramref name="maxItemsPerLine"/> items in a line. Candidates are considered
+            from fewest to most lines, so the first layout that fits at the requested scale wins.
+            If none fits, the layout with the largest possible uniform scale wins; equal-scale
+            ties retain the candidate with fewer lines.
+            </summary>
+            <param name="vertical">
+            True when items advance vertically within a line and overflow into columns;
+            false when items advance horizontally and overflow into rows.
+            </param>
+            <param name="itemWidth">Unscaled width of one conservative item footprint.</param>
+            <param name="itemHeight">Unscaled height of one conservative item footprint.</param>
+            <param name="horizontalPitch">Unscaled distance between adjacent item/column centres.</param>
+            <param name="verticalPitch">Unscaled distance between adjacent item/row centres.</param>
+            <param name="requiredLineCount">
+            Optional hard line-count constraint. Side presets use one line to scale a BCL-style
+            vertical lane instead of allowing the solver to add inward columns.
+            </param>
+        </member>
+        <member name="T:VoiceChatPlugin.VoiceChat.SpeakingBarVisualMetrics">
+            <summary>
+            Shared world-space measurements used by the live speaking bar and its settings preview.
+            Keeping these in one place prevents the miniature viewport from drifting away from the HUD.
+            </summary>
+        </member>
+        <member name="T:VoiceChatPlugin.VoiceChat.SpeakingBarPreviewRoster">
+            <summary>
+            Deterministic stress roster shared by Advanced &gt; Show Fake 15 Players and the
+            isolated settings preview. It never reads game, network, privacy, or voice state.
+            </summary>
+        </member>
+        <member name="T:VoiceChatPlugin.VoiceChat.SpeakingBarLivePreviewLayoutPolicy">
+            <summary>
+            Keeps the miniature preview's topology aligned with the live HUD. The preview viewport may
+            uniformly shrink that topology to fit, but its smaller canvas must not create extra rows or
+            columns that would not exist in game.
+            </summary>
+        </member>
+        <member name="T:VoiceChatPlugin.VoiceChat.SpeakingBarPreviewSettings">
+            <summary>
+            Complete immutable input for the isolated speaking-bar renderer. The settings panel builds
+            this from live config entries, while first-run setup builds it from a staged draft so merely
+            hovering a preset never writes config or mutates the real HUD.
+            </summary>
+        </member>
+        <member name="M:VoiceChatPlugin.VoiceChat.SpeakingBarPreviewSettings.#ctor(VoiceChatPlugin.VoiceChat.SpeakingBarPosition,VoiceChatPlugin.VoiceChat.SpeakingBarSideLayout,System.Boolean,VoiceChatPlugin.VoiceChat.VoiceControlsLayout,VoiceChatPlugin.VoiceChat.SpeakingBarAvatarFacing,System.Single,System.Single,VoiceChatPlugin.VoiceChat.SpeakingBarNamePosition,System.Single,System.Boolean)">
+            <summary>
+            Complete immutable input for the isolated speaking-bar renderer. The settings panel builds
+            this from live config entries, while first-run setup builds it from a staged draft so merely
+            hovering a preset never writes config or mutates the real HUD.
+            </summary>
+        </member>
+        <member name="T:VoiceChatPlugin.VoiceChat.SpeakingBarLivePreviewTransitionPolicy">
+            <summary>
+            Stages the settings-card movement ahead of the preview reveal. Because both values
+            are derived from one reversible progress value, disabling naturally fades the preview
+            away before the settings card glides back to center.
+            </summary>
+        </member>
+        <member name="T:VoiceChatPlugin.VoiceChat.SpeakingBarLivePreviewWorkspacePolicy">
+            <summary>
+            Pure sizing policy for placing the unchanged settings card and preview card side-by-side.
+            </summary>
+        </member>
+        <member name="M:VoiceChatPlugin.VoiceChat.VoiceChatHudState.ShowCompactStatus(System.String)">
+            <summary>
+            Shows an existing routine voice notification on the small status surface. Deliberately
+            separate from ShowToast: helper failures and compatibility notices retain the prominent
+            banner, while refresh/mode/mix confirmations no longer occupy the center of the screen.
+            </summary>
+        </member>
+        <member name="M:VoiceChatPlugin.VoiceChat.VoiceChatHudState.BeginVoiceSession">
+            <summary>
+            Resets process-static HUD/input state for a confirmed new voice session. StartMuted and
+            StartDeafened are session defaults, not one-time plugin-load defaults; PTT/radio holds must
+            never carry across lobbies.
+            </summary>
+        </member>
+        <member name="M:VoiceChatPlugin.VoiceChat.VoiceChatHudState.ApplyAudioPolicy(VoiceChatPlugin.VoiceChat.VoiceGameStateSnapshot)">
+            <summary>
+            Applies transmit policy without requiring any HUD object. A valid live PlayerControl remains
+            the most authoritative source. During scene reconstruction, the room snapshot (or its last
+            trusted local entry) preserves role/death state while the freshly-resolved phase is applied.
+            If neither exists in Tasks/Meeting/Exile, fail closed until identity is trustworthy again.
+            This only mutes capture; speaker playback and peer signaling remain available for listen-only
+            users, including clients with no microphone or denied microphone permission.
+            </summary>
+        </member>
+        <member name="T:VoiceChatPlugin.VoiceChat.VoiceSettingsScrollPolicy">
+            <summary>
+            Pure scrolling math shared by the settings panel and its tests. Unity input remains in
+            the panel, while clamping, easing, and scrollbar geometry stay deterministic here.
+            </summary>
+        </member>
+        <member name="M:VoiceChatPlugin.NativeLibraryCache.BuildContentVersion(System.Reflection.Assembly,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Returns an immutable bundle identity tied to both the managed build and the selected
+            embedded resources. The module MVID changes for managed-only rebuilds, while hashing
+            the resource bytes also protects non-standard packaging pipelines that preserve it.
+            </summary>
+        </member>
+        <member name="M:VoiceChatPlugin.NativeLibraryCache.HoldBundleLease(System.String)">
+            <summary>
+            Holds a shareable, process-lifetime lease. Stale cleanup asks for exclusive access to
+            the same file, so it cannot remove a bundle another current plugin process is using.
+            </summary>
+        </member>
+        <member name="M:VoiceChatPlugin.NativeLibraryCache.PruneStaleBundles(System.String,System.String,System.String)">
+            <summary>
+            Deletes inactive versioned bundles only. Every failure is deliberately ignored: a
+            locked executable, loaded DSP library, active lease, or permissions issue must never
+            prevent the current helper from launching.
+            </summary>
+        </member>
+        <member name="M:VoiceChatPlugin.CrewmateAvatarRenderer.TryCreateSpeakingBarPreview(System.Int32,UnityEngine.Transform,UnityEngine.GameObject@,System.Boolean@)">
+            <summary>
+            Creates an avatar for the in-game 15-player fake speaking-bar roster. The living body remains
+            deterministic; fake ghost entries may also borrow the already-loaded canonical game ghost
+            sprite. Settings/setup previews use the isolated overload below and never enter this path.
+            </summary>
+        </member>
+        <member name="M:VoiceChatPlugin.CrewmateAvatarRenderer.TryCreatePreview(System.Int32,UnityEngine.Transform,System.Int32,System.Boolean,UnityEngine.GameObject@)">
+            <summary>
+            Creates the same deterministic preview avatar on a caller-owned rendering layer.
+            Settings previews use this overload so constructing an avatar does not create, sync,
+            or share the real speaking-overlay camera.
+            </summary>
+        </member>
+        <member name="M:VoiceChatPlugin.CrewmateAvatarRenderer.TryEnsureSpeakingBarPreviewGhost(System.Int32,UnityEngine.GameObject)">
+            <summary>
+            Adds the real vanilla ghost body to an existing in-game fake-roster icon. This is deliberately
+            separate from the caller-owned settings/setup preview overload so opening those surfaces never
+            touches PlayerControl, game body assets, overlay materials, or the overlay camera.
+            </summary>
+        </member>
+        <member name="M:VoiceChatPlugin.CrewmateAvatarRenderer.TryCreateLightweightPreview(System.Int32,UnityEngine.Transform,System.Int32,UnityEngine.GameObject@)">
+            <summary>
+            Builds a small, crewmate-shaped preview chip from already-cached UI sprites. Unlike the
+            full preview avatar path, this never performs a per-colour 100x100 texture recolour/upload,
+            so opening a HUD editor cannot stall the UI while fifteen synthetic colours are prepared.
+            </summary>
+        </member>
+        <member name="M:VoiceChatPlugin.CrewmateAvatarRenderer.TryRefreshPublicGhostCosmetics(UnityEngine.GameObject,PlayerControl)">
+            <summary>
+            Rebuilds a publicly dead avatar from the live post-ghost body and cosmetic renderers. Each renderer keeps
+            its complete transform path and sorting delta relative to the same PlayerControl root, so front/back hats,
+            visors, animated assets, modded pivots, and alternate multi-part ghost bodies stay mutually aligned.
+            </summary>
+        </member>
+        <member name="M:VoiceChatPlugin.CrewmateAvatarRenderer.TryRefreshPublicGhostBody(UnityEngine.GameObject,PlayerControl)">
+            <summary>
+            Completes a pending ghost-body transition without rebuilding the already aligned cosmetic snapshot.
+            Among Us may finish currentBodySprite later than its cosmetic hierarchy; replacing only the body avoids
+            a second hat/visor position sample and the visible one-frame vertical hop that sample could introduce.
+            </summary>
+        </member>
+        <member name="M:VoiceChatPlugin.CrewmateAvatarRenderer.RequiresLiveGhostBodyRefresh(PlayerControl)">
+            <summary>
+            The canonical normal ghost is already rendered from normalBodySprite's stable transform before
+            the game's delayed sprite swap completes. Only alternate or multi-part ghost bodies need replacing;
+            replacing the canonical body sampled a different animation offset and looked like cosmetic jitter.
+            </summary>
+        </member>
+        <member name="M:VoiceChatPlugin.CrewmateAvatarRenderer.SetPublicGhostAppearance(UnityEngine.GameObject,System.Boolean)">
+            <summary>
+            Switches an already-created speaking avatar between living and post-ghost renderer sets. The caller supplies
+            only publicly-known death state; this method never reads live IsDead and cannot reveal a task-phase death.
+            </summary>
+            <returns>True only when genuine ghost body artwork is active.</returns>
+        </member>
+        <member name="M:VoiceChatPlugin.CrewmateAvatarRenderer.GetStableIdentityPaletteColor(PlayerControl)">
+            <summary>
+            Settings rosters pair this swatch with the player's real name, so they must always use the
+            stable default identity. Reading a live disguise or concealment here would itself leak
+            identity even when every speaking meter is correctly hidden.
+            </summary>
+        </member>
+        <member name="T:VoiceChatPlugin.OwnedGhostBodyMaterial">
+            <summary>
+            Owns the cloned material used by a vanilla ghost body and optionally updates its Rainbow
+            palette. PlayerMaterial's Renderer overload instantiates materials internally, so this owner
+            deliberately uses the Material overload and destroys exactly the clone it created.
+            </summary>
+        </member>
+    </members>
+</doc>
