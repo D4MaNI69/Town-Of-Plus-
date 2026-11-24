@@ -10,3 +10,16 @@ C:\Users\Admin\Pictures\Nueva carpeta\Town of plus+\obj\Debug\net6.0\TownOfPlus.
 C:\Users\Admin\Pictures\Nueva carpeta\Town of plus+\obj\Debug\net6.0\refint\TownOfPlus.dll
 C:\Users\Admin\Pictures\Nueva carpeta\Town of plus+\obj\Debug\net6.0\TownOfPlus.pdb
 C:\Users\Admin\Pictures\Nueva carpeta\Town of plus+\obj\Debug\net6.0\ref\TownOfPlus.dll
+C:\Users\Admin\Desktop\TOWN OF PLUS\TOWN OF PLUS\bin\Debug\net6.0\TownOfPlus.deps.json
+C:\Users\Admin\Desktop\TOWN OF PLUS\TOWN OF PLUS\bin\Debug\net6.0\TownOfPlus.dll
+C:\Users\Admin\Desktop\TOWN OF PLUS\TOWN OF PLUS\bin\Debug\net6.0\TownOfPlus.pdb
+C:\Users\Admin\Desktop\TOWN OF PLUS\TOWN OF PLUS\obj\Debug\net6.0\Townofplus.csproj.AssemblyReference.cache
+C:\Users\Admin\Desktop\TOWN OF PLUS\TOWN OF PLUS\obj\Debug\net6.0\Townofplus.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Admin\Desktop\TOWN OF PLUS\TOWN OF PLUS\obj\Debug\net6.0\Townofplus.AssemblyInfoInputs.cache
+C:\Users\Admin\Desktop\TOWN OF PLUS\TOWN OF PLUS\obj\Debug\net6.0\Townofplus.AssemblyInfo.cs
+C:\Users\Admin\Desktop\TOWN OF PLUS\TOWN OF PLUS\obj\Debug\net6.0\Townofplus.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Desktop\TOWN OF PLUS\TOWN OF PLUS\obj\Debug\net6.0\Townofplus.sourcelink.json
+C:\Users\Admin\Desktop\TOWN OF PLUS\TOWN OF PLUS\obj\Debug\net6.0\TownOfPlus.dll
+C:\Users\Admin\Desktop\TOWN OF PLUS\TOWN OF PLUS\obj\Debug\net6.0\refint\TownOfPlus.dll
+C:\Users\Admin\Desktop\TOWN OF PLUS\TOWN OF PLUS\obj\Debug\net6.0\TownOfPlus.pdb
+C:\Users\Admin\Desktop\TOWN OF PLUS\TOWN OF PLUS\obj\Debug\net6.0\ref\TownOfPlus.dll

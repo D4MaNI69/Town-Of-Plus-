@@ -1,27 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Admin\\Pictures\\Nueva carpeta\\Town of plus+\\Townofplus.csproj": {}
+    "C:\\Users\\Admin\\Desktop\\TOWN OF PLUS\\TOWN OF PLUS\\Townofplus.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Admin\\Pictures\\Nueva carpeta\\Town of plus+\\Townofplus.csproj": {
+    "C:\\Users\\Admin\\Desktop\\TOWN OF PLUS\\TOWN OF PLUS\\Townofplus.csproj": {
       "version": "1.0.8",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Admin\\Pictures\\Nueva carpeta\\Town of plus+\\Townofplus.csproj",
+        "projectUniqueName": "C:\\Users\\Admin\\Desktop\\TOWN OF PLUS\\TOWN OF PLUS\\Townofplus.csproj",
         "projectName": "TownOfPlus",
-        "projectPath": "C:\\Users\\Admin\\Pictures\\Nueva carpeta\\Town of plus+\\Townofplus.csproj",
+        "projectPath": "C:\\Users\\Admin\\Desktop\\TOWN OF PLUS\\TOWN OF PLUS\\Townofplus.csproj",
         "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Admin\\Pictures\\Nueva carpeta\\Town of plus+\\obj\\",
+        "outputPath": "C:\\Users\\Admin\\Desktop\\TOWN OF PLUS\\TOWN OF PLUS\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Admin\\Pictures\\Nueva carpeta\\Town of plus+\\NuGet.Config",
+          "C:\\Users\\Admin\\Desktop\\TOWN OF PLUS\\TOWN OF PLUS\\NuGet.Config",
           "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
-          "C:\\Users\\Admin\\Pictures\\Nueva carpeta\\Town of plus+\\packages.local\\": {},
+          "C:\\Users\\Admin\\Desktop\\TOWN OF PLUS\\TOWN OF PLUS\\packages.local\\": {},
           "https://api.nuget.org/v3/index.json": {},
           "https://nuget.bepinex.dev/v3/index.json": {},
           "https://nuget.reactor.gg/v3/index.json": {},
