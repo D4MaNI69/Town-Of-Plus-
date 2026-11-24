@@ -14,17 +14,17 @@ nuevos roles y modificadores sobre [Town Of Us – Mira](https://github.com/AU-A
 Únete al Discord:
 [Link](https://discord.gg/39b4CT9jsa)
 <p align="center">
-  <img src="./Resources/Headers/CrewInvestigative.png" alt="Tripulante Investigativo"/>
+  <img src="./Resources/Headers/CrewInves.png" alt="Tripulante Investigativo"/>
   <a href="#"><img width="10%" src="./Resources/Icons/Ermitano.png" alt="Ermitano"/></a>
   <a href="#"><img width="10%" src="./Resources/Icons/ritualista.png" alt="Ritualista"/></a>
-  <img src="./Resources/Headers/CrewPower.png" alt="Tripulante Poder"/>
+  <img src="./Resources/Headers/CrewSupe.png" alt="Tripulante Poder"/>
   <a href="#"><img width="10%" src="./Resources/Icons/profesor.png" alt="Profesor"/></a>
   <a href="#"><img width="10%" src="./Resources/Icons/deudor.png" alt="Deudor"/></a>
-  <img src="./Resources/Headers/CrewSupport.png" alt="Tripulante Soporte"/>
+  <img src="./Resources/Headers/CrewApoy.png" alt="Tripulante Soporte"/>
   <a href="#"><img width="10%" src="./Resources/Icons/colega.png" alt="Colega"/></a>
   <a href="#"><img width="10%" src="./Resources/Icons/Victima.png" alt="Víctima"/></a>
   <a href="#"><img width="10%" src="./Resources/Icons/Aislador.png" alt="Aislador"/></a>
-  <img src="./Resources/Headers/crewmate afterlife.png" alt="Tripulante Más Allá"/>
+  <img src="./Resources/Headers/CrewAfterlife.png" alt="Tripulante Más Allá"/>
   <a href="#"><img width="10%" src="./Resources/Icons/cerrajero.png" alt="Cerrajero"/></a>
   <a href="#"><img width="10%" src="./Resources/Icons/Huesped.png" alt="Huésped"/></a>
   <a href="#"><img width="10%" src="./Resources/Icons/Eco.png" alt="Eco"/></a>
@@ -38,7 +38,7 @@ nuevos roles y modificadores sobre [Town Of Us – Mira](https://github.com/AU-A
   <a href="#"><img width="10%" src="./Resources/Icons/Dictador.png" alt="Dictador"/></a>
   <img src="./Resources/Headers/ImpAfterlife.png" alt="Impostor Más Allá"/>
   <a href="#"><img width="10%" src="./Resources/Icons/Saboteador.png" alt="Saboteador"/></a>
-  <img src="./Resources/Headers/NeutEvil.png" alt="Neutral"/>
+  <img src="./Resources/Headers/NeutAfterlife.png" alt="Neutral"/>
   <a href="#"><img width="10%" src="./Resources/Icons/Amalgama.png" alt="Amalgama"/></a>
 </p>
 
@@ -90,11 +90,6 @@ Aprovecha tu estado fantasmal para tomar el control de un jugador durante unos s
 **Eco** — Espíritu con ancla  
 Tienes un ancla (jugador vivo asignado) a la que estas atada. pueden comunicarse mutuamente pero el ANCLA puede ser adivinado
 
-### Neutral del Más Allá
-
-**Amalgama** — Resucita en un cuerpo con un rol nuevo  
-Tienes una segunda oportunidad de volver a la vida. Pero tu destino es incierto: ayudar a tu tripulación o masacrar a tus propios compañeros.
-
 ### Impostor Soporte
 
 **Abogado** — Chantajea jugadores y termina reuniones  
@@ -119,6 +114,11 @@ Empieza como un impostor normal. En cada reunión acumula los votos EN CONTRA. A
 
 **Saboteador** — Apaga las luces desde el más allá  
 Puedes sabotear electricidad durante unos segundos. Incluso si tus aliados ya saboteó otra cosa.
+
+### Neutral del Más Allá
+
+**Amalgama** — Resucita en un cuerpo con un rol nuevo  
+Tienes una segunda oportunidad de volver a la vida. Pero tu destino es incierto: ayudar a tu tripulación o masacrar a tus propios compañeros.
 
 ## Releases
 
