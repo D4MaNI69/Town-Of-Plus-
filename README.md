@@ -3,7 +3,7 @@
 > Este mod requiere que Town of Us: Mira esté instalado y NO es para versiones de consola de Among Us.
 
 <div align="center">
-  <a href="#"><img src="./Resources/Banners/TownOfPlusLogo.png" alt="Town Of Plus"/></a>
+  <a href="#"><img src="./Resources/Headers/townofplus.png" alt="Town Of Plus"/></a>
   <p>Town Of Plus</p>
 </div>
 <br/>
@@ -28,13 +28,13 @@ nuevos roles y modificadores sobre [Town Of Us – Mira](https://github.com/AU-A
   <a href="#"><img width="10%" src="./Resources/Icons/cerrajero.png" alt="Cerrajero"/></a>
   <a href="#"><img width="10%" src="./Resources/Icons/Huesped.png" alt="Huésped"/></a>
   <a href="#"><img width="10%" src="./Resources/Icons/Eco.png" alt="Eco"/></a>
-  <img src="./Resources/Headers/ImpSupport.png" alt="Impostor Soporte"/>
+  <img src="./Resources/Headers/ImpApoy.png" alt="Impostor Soporte"/>
   <a href="#"><img width="10%" src="./Resources/Icons/Abogado.png" alt="Abogado"/></a>
-  <img src="./Resources/Headers/ImpConcealing.png" alt="Impostor Ocultamiento"/>
+  <img src="./Resources/Headers/ImpOcul.png" alt="Impostor Ocultamiento"/>
   <a href="#"><img width="10%" src="./Resources/Icons/Kamikaze.png" alt="Kamikaze"/></a>
-  <img src="./Resources/Headers/ImpKilling.png" alt="Impostor Eliminación"/>
+  <img src="./Resources/Headers/ImpAsesin.png" alt="Impostor Eliminación"/>
   <a href="#"><img width="10%" src="./Resources/Icons/francotirador.png" alt="Francotirador"/></a>
-  <img src="./Resources/Headers/ImpPower.png" alt="Impostor Poder"/>
+  <img src="./Resources/Headers/ImpSupe.png" alt="Impostor Poder"/>
   <a href="#"><img width="10%" src="./Resources/Icons/Dictador.png" alt="Dictador"/></a>
   <img src="./Resources/Headers/ImpAfterlife.png" alt="Impostor Más Allá"/>
   <a href="#"><img width="10%" src="./Resources/Icons/Saboteador.png" alt="Saboteador"/></a>
