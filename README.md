@@ -1,17 +1,17 @@
 > [!NOTE]
-> Este repositorio es un mod de extensión para [Town of Us: Mira](https://github.com/AU-Avengers/TOU-Mira) que añade nuevos roles y modificadores.\
-> Este mod requiere que Town of Us: Mira esté instalado y NO es para versiones de consola de Among Us.
+> Esto es un mod extensión para [Town of Us: Mira](https://github.com/AU-Avengers/TOU-Mira) que añade nuevos roles.\
+> Este mod requiere que Town of Us: Mira esté instalado para funcionar perfectamente.
 
 <div align="center">
   <a href="#"><img src="./Resources/Headers/townofplus.png" alt="Town Of Plus"/></a>
-  <p>Town Of Plus</p>
+  <p>Un mod innecesariamente necesario</p>
 </div>
 <br/>
 
-Un mod de [Among Us](https://store.steampowered.com/app/945360/Among_Us/) que añade
-nuevos roles y modificadores sobre [Town Of Us – Mira](https://github.com/AU-Avengers/TOU-Mira).
+Mod de [Among Us](https://store.steampowered.com/app/945360/Among_Us/) que añade bastantes
+nuevos roles para [Town Of Us – Mira](https://github.com/AU-Avengers/TOU-Mira).
 
-Únete al Discord:
+ÚNETE A DUESTRO DISCORD:
 [Link](https://discord.gg/39b4CT9jsa)
 <p align="center">
   <img src="./Resources/Headers/CrewInves.png" alt="Tripulante Investigativo"/>
@@ -47,8 +47,6 @@ nuevos roles y modificadores sobre [Town Of Us – Mira](https://github.com/AU-A
 1. Instala el mod usando el mismo proceso de configuración que Town Of Us Mira.
 2. Una vez instalado Town Of Us Mira, coloca `TownOfPlus.dll` en la carpeta `[MODFOLDER]/BepInEx/plugins/`.
 3. Inicia Among Us. Todas las opciones de Town Of Plus aparecerán en la pestaña **Town Of Plus** en las opciones del vestíbulo.
-
-Para la instalación más simple, asegúrate de que tu instalación de Town Of Us Mira funcione primero, luego agrega `TownOfPlus.dll` a la carpeta de plugins.
 
 ## Roles
 
