@@ -124,7 +124,7 @@ Tienes una segunda oportunidad de volver a la vida. Pero tu destino es incierto:
 
 | Versión del juego | Versión del mod | Town Of Us: Mira | Enlace de descarga |
 | ------------ | ----------- | ---------------- | ------------- |
-| 19.0 | 1.0.8 | [v1.0.7-beta1](https://github.com/d4mani/TownOfPlus/releases/tag/v1.0.8) |
+| 19.0 | 1.0.8 | [v1.0.7-beta1](https://github.com/D4MaNI69/Town-Of-Plus-/releases/tag/top) |
 
 ---
 
